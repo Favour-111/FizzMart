@@ -1,0 +1,44 @@
+.skeleton-card {
+  width: 100%; /* or 100%, depending on layout */
+  border-radius: 8px;
+  background: #fff; /* optional: mimic card background */
+  flex-shrink: 0; /* prevents flex from collapsing it */
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  height: 15px;
+  margin-bottom: 8px;
+}
+
+.skeleton-text.short {
+  width: 60%;
+}
+.skeleton-text.shorter {
+  width: 20%;
+}
+.skeleton-text.Btn {
+  width: 100%;
+  height: 30px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

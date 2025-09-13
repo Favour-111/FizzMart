@@ -1,0 +1,110 @@
+:root {
+  --primary-blue: #1e40af;
+  --accent-blue: #0ea5e9;
+  --background-blue: #eff6ff;
+  --text-blue: #1e293b;
+  --text-normal: #4b5966;
+  --hover-blue: #3b82f6;
+}
+.receipt-wrapper {
+  border-radius: 20px;
+}
+.receipt-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.payment-value {
+  background-color: #15bfd51c;
+  color: #15bfd5;
+  font-size: 13px;
+  padding: 3px 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+  width: fit-content;
+}
+.receipt-info {
+  margin-top: 10px;
+  .label {
+    color: #787878;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .value {
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+  }
+}
+.receipt-info-item {
+  margin-top: 10px;
+}
+.receipt-item {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .item-name {
+    font-size: 12px;
+    width: 140px;
+  }
+  .item-meta {
+    font-size: 12px;
+    color: #787878;
+  }
+
+  .item-price {
+    font-size: 12px;
+    color: #787878;
+  }
+}
+.summary-row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  div {
+    font-size: 12px;
+    font-weight: 400;
+    color: #787878;
+  }
+  span {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+.print-btn {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: var(--text-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 200ms;
+}
+.print-btn:hover {
+  background-color: #0c1017;
+}
+
+@media print {
+  .print-btn {
+    display: none; /* Hide button in print/PDF */
+  }
+  body {
+    background: #fff;
+  }
+}
+@media screen and (max-width: 768px) {
+  .receipt-item {
+    .item-name {
+      font-size: 11px;
+      width: 100px;
+    }
+    .item-meta {
+      font-size: 11px;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.CartLoader-skeleton-card {
+  flex: 1; /* 3 per row */
+  background: #fff;
+  border-bottom: 1px solid #d3d3d3;
+  padding: 15px;
+  height: fit-content;
+}
+.CartLoader-skeleton {
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: CartLoader-skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+.CartLoader-skeleton-card-body {
+  width: 65%;
+}
+.CartLoader-skeleton-card-summary {
+  margin-top: 30px;
+  width: 33%;
+  height: 300px;
+}
+/* only text lines should have spacing */
+.CartLoader-skeleton-text {
+  height: 15px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.CartLoader-skeleton-img {
+  width: 100px;
+  height: 90px;
+}
+.CartLoader-skeleton-counter {
+  width: 100px;
+  height: 40px;
+}
+
+.CartLoader-skeleton-text.short {
+  width: 60%;
+}
+.CartLoader-skeleton-text.shorter {
+  width: 20%;
+}
+
+.CartLoader-skeleton-text.shortest {
+  width: 9%;
+}
+.CartLoader-skeleton-text.Btn {
+  width: 100%;
+  height: 30px;
+}
+@keyframes CartLoader-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .CartLoader-skeleton-img {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .CartLoader-skeleton-card-body {
+    width: 100% !important;
+  }
+  .CartLoader-skeleton-card-summary {
+    width: 100% !important;
+  }
+}

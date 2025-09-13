@@ -1,0 +1,159 @@
+:root {
+  --primary-blue: #1e40af;
+  --accent-blue: #0ea5e9;
+  --background-blue: #eff6ff;
+  --text-blue: #1e293b;
+  --text-normal: #4b5966;
+  --hover-blue: #3b82f6;
+}
+.about {
+  padding: 50px;
+}
+.about-flex {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+.about-text {
+  width: 50%;
+}
+.about-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  img {
+    width: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+.about-head {
+  font-weight: 700;
+  font-size: 35px;
+  color: var(--text-blue);
+}
+.about-content {
+  margin-top: 10px;
+  color: #787878;
+  font-weight: 500;
+}
+.ready-text {
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--text-blue);
+}
+.about-fizzmart {
+  margin-top: 80px;
+}
+.about-contents-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+.about-item {
+  background-color: #f0f0f0;
+  width: 30%;
+  padding: 30px;
+  border-radius: 10px;
+}
+.about-item-img {
+  img {
+    width: 100px;
+    margin-top: 20px;
+  }
+}
+.about-item-head {
+  font-weight: 700;
+  color: var(--text-blue);
+  font-size: 20px;
+  margin-top: 20px;
+}
+.about-item-content {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #787878;
+}
+.about-item-button {
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 7px;
+  background-color: #1e293b;
+  color: white;
+  transition: 100ms;
+}
+.about-item-button:hover {
+  background-color: #1e293bca;
+}
+.why-container {
+  margin-top: 70px;
+}
+.why-text {
+  color: var(--text-blue);
+  font-size: 23px;
+  font-weight: 700;
+}
+.why {
+  display: flex;
+  margin-top: 20px;
+}
+.why-container-items {
+  width: 100%;
+}
+
+.why-item {
+  font-size: 14px;
+  color: var(--text-normal);
+  font-weight: 500;
+  margin-top: 10px;
+}
+@media screen and (max-width: 970px) {
+  .about {
+    padding: 30px 0;
+  }
+}
+@media screen and (max-width: 870px) {
+  .about {
+    padding: 30px 0;
+  }
+  .about-flex {
+    flex-direction: column;
+  }
+  .about-text {
+    width: 100%;
+    text-align: center;
+  }
+  .about-img {
+    margin-top: 30px;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 610px) {
+  .about-head {
+    font-size: 25px;
+  }
+  .about-flex {
+    margin-top: 0 !important;
+  }
+  .about-content {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .about-contents-item {
+    flex-direction: column;
+  }
+  .about-item {
+    width: 100%;
+  }
+  .why-container {
+    margin-top: 40px;
+  }
+}

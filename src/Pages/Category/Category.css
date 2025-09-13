@@ -1,0 +1,132 @@
+:root {
+  --primary-blue: #1e40af;
+  --accent-blue: #0ea5e9;
+  --background-blue: #eff6ff;
+  --text-blue: #1e293b;
+  --text-normal: #4b5966;
+  --hover-blue: #3b82f6;
+}
+
+.second-banner2 {
+  margin-top: 40px;
+  background-color: #f0f3f2;
+  padding: 0 50px;
+  height: 200px;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border-radius: 10px;
+  img {
+    width: 350px;
+  }
+}
+.second-banner-head2 {
+  font-size: 30px;
+  color: var(--text-blue);
+  font-weight: 900;
+}
+.category-page-head {
+  font-weight: 700;
+  font-size: 13px;
+  margin-top: 30px;
+  span {
+    color: var(--primary-blue);
+  }
+}
+.category-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+.category-page-item {
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 32%;
+  transition: 300ms;
+  cursor: pointer;
+}
+.category-page-item:hover {
+  box-shadow: -1px 2px 11px 0px rgba(0, 0, 0, 0.14);
+}
+.category-page-img {
+  background-color: #f1f1f1;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  img {
+    width: 50px;
+  }
+}
+.category-page-item-head {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  transition: 200ms;
+  cursor: pointer;
+}
+.category-page-item-head:hover {
+  color: #1e40af;
+}
+.category-page-item-Content {
+  font-size: 13px;
+  font-weight: 400;
+  color: #787878;
+  margin: 10px 0;
+}
+.category-page-sub-cont {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.category-page-sub-itm {
+  border-radius: 5px;
+  width: fit-content;
+  padding: 0 10px;
+  font-size: 12px;
+  transition: 250ms;
+  color: #787878;
+  background-color: #f3f3f3;
+  border: 1px solid #d3d3d3;
+}
+.category-page-sub-itm:hover {
+  background-color: #e4e4e4;
+  color: #1e293b;
+}
+@media screen and (max-width: 846px) {
+  .category-page-item {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .second-banner-head2 {
+    font-size: 25px;
+  }
+  .second-banner2 {
+    height: 150px;
+    margin-top: 10px;
+    padding: 0 20px;
+    img {
+      width: 200px;
+    }
+  }
+}
+@media screen and (max-width: 570px) {
+  .category-page-container {
+    gap: 0;
+    row-gap: 30px;
+  }
+  .category-page-item {
+    width: 100%;
+  }
+}

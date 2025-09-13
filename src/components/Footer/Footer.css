@@ -1,0 +1,132 @@
+:root {
+  --primary-blue: #1e40af;
+  --accent-blue: #0ea5e9;
+  --background-blue: #eff6ff;
+  --text-blue: #1e293b;
+  --hover-blue: #3b82f6;
+}
+.Footer {
+  background-color: #f0f3f2;
+  padding: 80px;
+  position: relative;
+  z-index: 10000;
+}
+.Footer-background {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  .footer-item-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-blue);
+  }
+}
+.footer-item {
+  width: 20%;
+}
+.footer-list {
+  margin-top: 12px;
+  padding: 0 !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  li {
+    list-style: none;
+  }
+  .footer-link {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #787878;
+  }
+}
+.footer-card-details {
+  margin-top: 20px;
+  padding: 20px 0;
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  .texts {
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+.footer-card-details {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.footer-social-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-social-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.copyright {
+  font-size: 12px;
+  font-weight: 600;
+  color: #787878;
+}
+.portfolio-link {
+  text-decoration: none;
+  margin-top: 5px;
+}
+.social-item-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.social-text {
+  color: #787878;
+  font-weight: 600;
+  font-size: 13px;
+}
+.social-item {
+  border: 1px solid #d3d3d3;
+  color: #787878;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  display: flex;
+  border-radius: 10px;
+
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 350ms;
+}
+
+.social-item:hover {
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+}
+
+@media screen and (max-width: 960px) {
+  .footer-item {
+    width: 50%;
+  }
+  .Footer {
+    padding: 50px 30px;
+  }
+  .footer-social-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .Footer {
+    padding: 50px 20px;
+  }
+  .footer-item {
+    width: 100%;
+  }
+  .Footer-background {
+    row-gap: 30px;
+  }
+}

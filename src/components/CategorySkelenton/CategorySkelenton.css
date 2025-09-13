@@ -1,0 +1,50 @@
+.Category-skeleton-card {
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+  width: 15%;
+}
+
+.Category-skeleton {
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: Category-skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+.Category-skeleton-img {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 10px;
+}
+.Category-skeleton-text {
+  height: 15px;
+  margin-bottom: 8px;
+}
+.Category-skeleton-text.short {
+  width: 60%;
+}
+.Category-skeleton-text.shorter {
+  width: 20%;
+}
+.Category-skeleton-text.Btn {
+  width: 100%;
+  height: 30px;
+}
+@keyframes Category-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@media screen and (max-width: 990px) {
+  .Category-skeleton-card {
+    width: 30% !important;
+  }
+}
+@media screen and (max-width: 990px) {
+  .Category-skeleton-card {
+    width: 33% !important;
+  }
+}
