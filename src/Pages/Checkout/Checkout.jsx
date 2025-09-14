@@ -6,7 +6,6 @@ import NavSm from "../../components/NavSm/NavSm";
 import { LiaOpencart, LiaTrashAlt } from "react-icons/lia";
 import { MdEdit } from "react-icons/md";
 import { RiCloseLargeFill } from "react-icons/ri";
-import { PaystackButton } from "react-paystack";
 import PaystackPop from "@paystack/inline-js";
 
 import { io } from "socket.io-client";
