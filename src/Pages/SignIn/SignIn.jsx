@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
+import toast from "react-hot-toast";
 const SignIn = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
@@ -54,7 +55,7 @@ const SignIn = () => {
         }
       } catch (error) {
         console.log("Registration error:", error);
-        alert(error.response?.data?.msg || "Something went wrong!");
+        toast.error(error.response?.data?.msg || "Something went wrong!");
       } finally {
         setLoader(false);
       }

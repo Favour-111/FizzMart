@@ -291,4 +291,9 @@
     font-size: 20px;
     margin-top: 30px;
   }
+  .shipping-content-buttons {
+    button {
+      padding: 9px 15px;
+    }
+  }
 }

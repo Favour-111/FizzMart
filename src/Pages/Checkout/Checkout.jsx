@@ -425,7 +425,7 @@ const Checkout = () => {
           phoneNumber: fetchUser?.phoneNumber || "",
           SecondNumber: selectedAddress?.SparePhoneNumber || "",
           DeliveryFee: totalFee,
-          OrderPrice: getTotalValue() + totalFee - (couponDiscount || 0),
+          OrderPrice: getTotalValue() - (couponDiscount || 0),
           street: selectedAddress?.street,
           Region: selectedAddress?.Region,
           city: selectedAddress?.city,
@@ -454,7 +454,7 @@ const Checkout = () => {
       phoneNumber: fetchUser?.phoneNumber || "",
       SecondNumber: selectedAddress?.SparePhoneNumber || "",
       DeliveryFee: totalFee, // ✅ dynamic
-      OrderPrice: getTotalValue() + totalFee - (couponDiscount || 0),
+      OrderPrice: getTotalValue() - (couponDiscount || 0),
       street: selectedAddress?.street,
       Region: selectedAddress?.Region,
       city: selectedAddress?.city,

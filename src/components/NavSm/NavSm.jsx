@@ -206,7 +206,7 @@ const NavSm = () => {
                       <li>
                         <Link
                           className="nav-sm-list-dropdown-link"
-                          to="/settings/profile"
+                          to="/sign-in"
                         >
                           <LuUser />
                           <div>Sign In</div>
@@ -216,7 +216,7 @@ const NavSm = () => {
                       <li>
                         <Link
                           className="nav-sm-list-dropdown-link"
-                          to="/settings/orders"
+                          to="/sign-in"
                         >
                           <TfiPackage />
                           <div>Orders</div>
@@ -225,7 +225,7 @@ const NavSm = () => {
                       <li>
                         <Link
                           className="nav-sm-list-dropdown-link"
-                          to="/settings/Wishlist-page"
+                          to="/sign-in"
                         >
                           <IoMdHeartEmpty />
                           <div>Wishlist</div>
@@ -234,7 +234,7 @@ const NavSm = () => {
                       <li>
                         <Link
                           className="nav-sm-list-dropdown-link"
-                          to="/settings/notification"
+                          to="/sign-in"
                         >
                           <BiBell />
                           <div>Notification</div>
@@ -472,7 +472,7 @@ const NavSm = () => {
                 <div>My Account</div>
               </Link>
 
-              <Link to="/settings/orders" className="user-menu-items">
+              <Link to="/sign-in" className="user-menu-items">
                 <div>
                   <TfiPackage />
                 </div>

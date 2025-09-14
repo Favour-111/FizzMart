@@ -5,11 +5,14 @@ import { useNavigate } from "react-router";
 
 const Receipt = ({ date, OrderId, Orders, discount, shipping }) => {
   const receiptRef = useRef();
-  const { cartItems, getTotalValue } = useContext(ShopContext);
+  const { cartItems } = useContext(ShopContext);
   const handlePrint = () => {
     window.print(); // Opens browser print dialog
   };
+  const getTotalValue = Orders.reduce((acc, item) => acc + item.price, 0);
+
   console.log(Orders);
+  console.log(getTotalValue);
 
   const navigate = useNavigate();
   return (
@@ -61,7 +64,7 @@ const Receipt = ({ date, OrderId, Orders, discount, shipping }) => {
         <div className="summary">
           <div className="summary-row">
             <span>Sub Total :</span>
-            <div> ₦{getTotalValue().toLocaleString()}</div>
+            <div> ₦{getTotalValue.toLocaleString()}</div>
           </div>
           <div className="summary-row">
             <span>Shipping :</span>
@@ -81,7 +84,7 @@ const Receipt = ({ date, OrderId, Orders, discount, shipping }) => {
           <div className="summary-row">
             <span className="total-label">Order Total</span>
             <span className="total-value">
-              ₦{(getTotalValue() + shipping - discount || 0).toLocaleString()}
+              ₦{(getTotalValue + shipping - discount || 0).toLocaleString()}
             </span>
           </div>
         </div>
