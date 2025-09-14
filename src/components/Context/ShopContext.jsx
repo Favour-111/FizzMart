@@ -158,10 +158,32 @@ const ShopContextProvider = (props) => {
       toast.success(`${updatedProduct.productName} updated!`);
     });
 
-    // 🔥 Listen for product deleted
+    socket.on("category-added", (newCategory) => {
+      setCategories((prev) => {
+        // Prevent duplicate
+        if (prev.some((cat) => cat._id === newCategory._id)) return prev;
+        return [...prev, newCategory];
+      });
+    });
+
+    // 🔥 Listen for category updated
+    socket.on("category-updated", (updatedCategory) => {
+      setCategories((prev) =>
+        prev.map((p) => (p._id === updatedCategory._id ? updatedCategory : p))
+      );
+      toast.success(`${updatedCategory.name} updated!`);
+    });
+
+    socket.on("category-deleted", (deletedCategory) => {
+      setCategories((prev) =>
+        prev.filter((p) => p._id !== deletedCategory._id)
+      );
+      toast("A category has been deleted");
+    });
+
     socket.on("product-deleted", ({ id }) => {
       setProduct((prev) => prev.filter((p) => p._id !== id));
-      toast.error("Product deleted");
+      toast("a product has been deleted");
     });
     socket.on("order-status-updated", (data) => {
       setNotification((prev) => {

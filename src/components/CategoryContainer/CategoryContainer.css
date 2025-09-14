@@ -77,6 +77,7 @@
 @media screen and (max-width: 510px) {
   .category {
     width: 33% !important;
+    margin-top: 30px !important;
   }
   .header-sub-head {
     margin-top: 30px;
@@ -85,8 +86,8 @@
     font-size: 20px;
   }
   .category-item {
-    width: 100px;
-    height: 100px;
+    width: 95%;
+    height: 120px;
     img {
       width: 65px;
     }

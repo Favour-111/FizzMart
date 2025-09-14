@@ -127,7 +127,7 @@ const Item = ({ product, category }) => {
                 }}
                 className="cart-btn"
               >
-                Add to cart
+                {cartLoader === product.id ? "Adding..." : "Add to cart"}
               </button>
             )}
 

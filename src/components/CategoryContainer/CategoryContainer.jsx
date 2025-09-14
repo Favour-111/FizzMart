@@ -36,7 +36,7 @@ const CategoryContainer = () => {
           })}
         </div>
       ) : (
-        <div className="Category-body-container mt-3">
+        <div className="mt-3 Category-body-container d-flex align-items-center justify-content-center">
           <CategorySkelenton />
           <CategorySkelenton />
           <CategorySkelenton />

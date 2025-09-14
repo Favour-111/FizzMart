@@ -7,18 +7,23 @@ import { LiaOpencart, LiaTrashAlt } from "react-icons/lia";
 import { MdEdit } from "react-icons/md";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { PaystackButton } from "react-paystack";
+import PaystackPop from "@paystack/inline-js";
 
+import { io } from "socket.io-client";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import NavBar from "../../components/NavBar/NavBar";
 import { IoLocation, IoWarning } from "react-icons/io5";
 import { CiLocationOn } from "react-icons/ci";
 import { ShopContext } from "../../components/Context/ShopContext";
-import PaystackPop from "@paystack/inline-js";
 import { useNavigate } from "react-router";
 import Footer from "../../components/Footer/Footer";
 import AddressLoader from "../../components/AddressLoader/AdressLoader";
 const Checkout = () => {
+  const socket = io(process.env.REACT_APP_API, {
+    transports: ["websocket"],
+  });
+
   const navigate = useNavigate();
   const { product, cartItems, clearCart, getTotalValue } =
     useContext(ShopContext);
@@ -76,12 +81,12 @@ const Checkout = () => {
 
     const fee = allLocation.find(
       (item) =>
-        item?.Region?.toLowerCase().trim() ===
+        item?.country?.toLowerCase().trim() ===
         selectedAddress?.Region?.toLowerCase().trim()
     );
 
-    const cityFee = fee?.city
-      ? Object.entries(fee.city).find(
+    const cityFee = fee?.state
+      ? Object.entries(fee.state).find(
           ([name]) =>
             name.toLowerCase().trim() ===
             selectedAddress?.city?.toLowerCase().trim()
@@ -155,6 +160,9 @@ const Checkout = () => {
         console.error("Error fetching locations:", err);
       }
     };
+    socket.on("country-added", (newLocation) => {
+      setLocations((prev) => [...prev, newLocation]);
+    });
     fetchLocations();
   }, []);
 
@@ -330,7 +338,7 @@ const Checkout = () => {
 
     setAddressAdd((prev) => ({
       ...prev,
-      Region: selectedLocation,
+      country: selectedLocation,
       city, // ✅ set selected city
     }));
   };
@@ -385,10 +393,26 @@ const Checkout = () => {
     const paystack = new PaystackPop();
 
     paystack.newTransaction({
-      key: publicKey,
-      amount: (getTotalValue() + totalFee - (couponDiscount || 0)) * 100, // fix operator precedence
+      key: publicKey, // ✅ Your Paystack public key
+      amount: (getTotalValue() + totalFee - (couponDiscount || 0)) * 100, // kobo
       email: fetchUser?.email,
       name: fetchUser?.FullName,
+      currency: "NGN",
+
+      metadata: {
+        custom_fields: [
+          {
+            display_name: "Customer Name",
+            variable_name: "customer_name",
+            value: fetchUser?.FullName,
+          },
+          {
+            display_name: "Phone Number",
+            variable_name: "phone_number",
+            value: fetchUser?.phoneNumber,
+          },
+        ],
+      },
 
       onSuccess: async (transaction) => {
         toast.success(`Payment Complete! Ref: ${transaction.reference}`);
@@ -401,7 +425,7 @@ const Checkout = () => {
           email: fetchUser?.email,
           phoneNumber: fetchUser?.phoneNumber || "",
           SecondNumber: selectedAddress?.SparePhoneNumber || "",
-          DeliveryFee: totalFee, // ✅ dynamic
+          DeliveryFee: totalFee,
           OrderPrice: getTotalValue() + totalFee - (couponDiscount || 0),
           street: selectedAddress?.street,
           Region: selectedAddress?.Region,
@@ -412,7 +436,7 @@ const Checkout = () => {
           cartItems: updatedCartItems,
         };
 
-        sendOrder(formDataObject, transaction);
+        await sendOrder(formDataObject, transaction);
       },
 
       onCancel: () => {
@@ -420,6 +444,7 @@ const Checkout = () => {
       },
     });
   };
+
   const PaymentOnDelivery = async () => {
     setLoaderPage(true);
 
@@ -448,7 +473,7 @@ const Checkout = () => {
 
       // ✅ get backend orderId
       const OrderIdentity = response.data.order?._id;
-      clearCart();
+
       navigate(`/Order-successful/${userId}`, {
         state: {
           OrderIdentity,
@@ -609,8 +634,8 @@ const Checkout = () => {
                           >
                             <option value="">Select Region</option>
                             {allLocation.map((loc) => (
-                              <option key={loc._id} value={loc.Region}>
-                                {loc.Region}
+                              <option key={loc._id} value={loc.country}>
+                                {loc.country}
                               </option>
                             ))}
                           </select>
@@ -628,8 +653,8 @@ const Checkout = () => {
                             {selectedLocation &&
                               Object.keys(
                                 allLocation.find(
-                                  (loc) => loc.Region === selectedLocation
-                                )?.city || {}
+                                  (loc) => loc.country === selectedLocation
+                                )?.state || {}
                               ).map((city) => (
                                 <option key={city} value={city}>
                                   {city}

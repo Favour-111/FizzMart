@@ -23,8 +23,14 @@ import axios from "axios";
 import toast from "react-hot-toast";
 const NavBar = () => {
   const navigate = useNavigate();
-  const { getTotalCart, product, getTotalList, categories, categoryLoader } =
-    useContext(ShopContext);
+  const {
+    getTotalCart,
+    product,
+    getTotalList,
+    notifications,
+    categories,
+    categoryLoader,
+  } = useContext(ShopContext);
   const [mainDrop, setMainDrop] = useState(false);
   const [megaDrop, setMegaDrop] = useState(false);
   const [AccountDrop, setAccountDrop] = useState(false);
@@ -32,7 +38,7 @@ const NavBar = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [accountMenu, setAccountMenu] = useState(false);
-  const [notifications, setNotification] = useState([]);
+
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setQuery(value);
@@ -58,23 +64,7 @@ const NavBar = () => {
     }
   };
   const userId = localStorage.getItem("userId");
-  const fetchNotification = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/notifications/${userId}`
-      );
-      if (response) {
-        setNotification(response.data.notifications);
-      } else {
-        console.log("error fetching notifications");
-      }
-    } catch (error) {
-      toast.error("network error");
-    }
-  };
-  useEffect(() => {
-    fetchNotification();
-  }, []);
+
   return (
     <div>
       <div className="top-bar">Super Value Deals - Save more with coupons</div>

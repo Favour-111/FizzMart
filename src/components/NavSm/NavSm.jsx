@@ -29,8 +29,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 const NavSm = () => {
   const navigate = useNavigate();
-  const { getTotalCart, product, getTotalList, categories, categoryLoader } =
-    useContext(ShopContext);
+  const {
+    getTotalCart,
+    product,
+    notifications,
+    getTotalList,
+    categories,
+    categoryLoader,
+  } = useContext(ShopContext);
 
   const [openNav, setOpenNav] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
@@ -49,7 +55,7 @@ const NavSm = () => {
   const [results, setResults] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
-  const [notifications, setNotification] = useState([]);
+
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setQuery(value);
@@ -75,23 +81,7 @@ const NavSm = () => {
     }
   };
   const userId = localStorage.getItem("userId");
-  const fetchNotification = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/notifications/${userId}`
-      );
-      if (response) {
-        setNotification(response.data.notifications);
-      } else {
-        console.log("error fetching notifications");
-      }
-    } catch (error) {
-      toast.error("network error");
-    }
-  };
-  useEffect(() => {
-    fetchNotification();
-  }, []);
+
   return (
     <div className="nav-sm">
       <div className="nav-sm-container mt-2">

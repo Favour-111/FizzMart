@@ -3,9 +3,13 @@ import { LiaTrashAlt } from "react-icons/lia";
 import { MdEdit } from "react-icons/md";
 import { RiCloseLargeFill } from "react-icons/ri";
 import axios from "axios";
+import { io } from "socket.io-client";
 import toast, { Toaster } from "react-hot-toast";
 import AddressLoader from "../../components/AddressLoader/AdressLoader";
 const Address = () => {
+  const socket = io(process.env.REACT_APP_API, {
+    transports: ["websocket"],
+  });
   const [addressModal, setAddressModal] = useState(false);
   const [addressList, setAddressList] = useState([]);
   const [delLoader, setDeleteLoader] = useState(null);
@@ -60,20 +64,25 @@ const Address = () => {
           `${process.env.REACT_APP_API}/countries`
         );
         const locationsData = response.data.reduce((acc, location) => {
-          acc[location.Region] = {
+          acc[location.country] = {
             price: location.price,
-            city: location.city,
+            city: location.state,
           };
           return acc;
         }, {});
+
         setLocation(locationsData);
       } catch (error) {
         console.error("Error fetching locations:", error);
       }
     };
-
+    socket.on("country-added", (newLocation) => {
+      setLocation((prev) => [...prev, newLocation]);
+    });
     fetchLocations();
   }, []);
+  console.log(locations);
+
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const handleLocationChange = (e) => {

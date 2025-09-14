@@ -103,7 +103,7 @@ const Cart = () => {
                                 onClick={() => {
                                   removeFromCart(item.id);
                                   toast.success(
-                                    `${item.name} has been removed from cart`
+                                    `${item.productName} has been removed from cart`
                                   );
                                 }}
                               >
