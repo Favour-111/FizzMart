@@ -9,7 +9,7 @@
 .nav-sm-container {
   padding: 15px 60px;
   display: flex;
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid #f3f3f3;
   align-items: center;
   justify-content: space-between;
 }
@@ -58,16 +58,16 @@
   color: #4b5966;
 }
 .nav-bar-input-sm {
-  border: 1px solid #d3d3d3;
+  border: 1px solid #efefef;
   display: flex;
   align-items: center;
-  border-radius: 7px;
-  padding: 2px 15px;
+  border-radius: 10px;
+  padding: 1px 15px;
   input {
     padding: 0 !important;
     border: none;
     outline: none;
-    height: 43px;
+    height: 42px;
     width: 100%;
   }
 }

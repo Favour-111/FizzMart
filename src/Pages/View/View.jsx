@@ -137,7 +137,7 @@ const View = () => {
             <div className="cont-2">
               <div className="abt-buttons">
                 <div>
-                  {!product.stock ? (
+                  {ProductFind.availability === "in Stock" ? (
                     cartItems[ProductFind?.id] > 0 ? (
                       <div className="abt-counter-body">
                         <button
@@ -165,14 +165,14 @@ const View = () => {
                       </div>
                     ) : (
                       <button
-                        className="abt-add-cart opacity-75"
+                        className="abt-add-cart "
                         onClick={() => {
-                          toast(
-                            `${ProductFind?.productName} is currently unavailable`
+                          toast.success(
+                            `${ProductFind?.productName} added to cart`
                           );
                         }}
                       >
-                        Item is Unavailable
+                        Add to Cart
                       </button>
                     )
                   ) : (
