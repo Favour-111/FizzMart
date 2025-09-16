@@ -78,6 +78,8 @@ const NavSm = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       navigate(`/Result?search=${encodeURIComponent(query)}`);
+    } else if (e.key === "return") {
+      navigate(`/Result?search=${encodeURIComponent(query)}`);
     }
   };
   const userId = localStorage.getItem("userId");
@@ -112,6 +114,18 @@ const NavSm = () => {
               </div>
               {results.length > 0 && (
                 <div className="menu-item-search-sm shadow-sm">
+                  <div
+                    onClick={() => {
+                      navigate(`/Result?search=${encodeURIComponent(query)}`);
+                      setResults(false);
+                    }}
+                    className="search-item-container"
+                  >
+                    <div>{query}</div>
+                    <div>
+                      <GoArrowUpRight />
+                    </div>
+                  </div>
                   {results.map((name, index) => (
                     <div
                       onClick={() => {
@@ -516,6 +530,18 @@ const NavSm = () => {
           </div>
           {results.length > 0 && (
             <div className="search-item-sm shadow-sm">
+              <div
+                onClick={() => {
+                  navigate(`/Result?search=${encodeURIComponent(query)}`);
+                  setResults(false);
+                }}
+                className="search-item-container"
+              >
+                <div>{query}</div>
+                <div>
+                  <GoArrowUpRight />
+                </div>
+              </div>
               {results.map((name, index) => (
                 <div
                   onClick={() => {

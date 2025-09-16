@@ -178,11 +178,11 @@ const Cart = () => {
                   </div>
 
                   <div className="price">
-                    <div>coupon-discount</div>
+                    <div>Referral-discount</div>
                     <div className="cart-sub-price">{Coupon}% discount</div>
                   </div>
                   <div className="price">
-                    <div>Coupon</div>
+                    <div>Referral code</div>
                     <div className="cart-sub-price">
                       ₦ {couponDiscount !== 0 ? "-" : ""}{" "}
                       {couponDiscount.toLocaleString()}
@@ -225,11 +225,27 @@ const Cart = () => {
                             "Please ensure you sign in before checking out"
                           );
                           navigate("/sign-in");
-                        } else {
-                          navigate("/checkout-items", {
-                            state: { couponDiscount }, // ✅ wrap in object
-                          });
+                          return;
                         }
+
+                        // ✅ check if any product in cart is out of stock
+                        const hasOutOfStock = cartProducts.some(
+                          (item) =>
+                            cartItems[item.id] > 0 &&
+                            item.availability === "out Of Stock"
+                        );
+
+                        if (hasOutOfStock) {
+                          toast.error(
+                            "A product in your cart is currently out of stock"
+                          );
+                          return;
+                        }
+
+                        // ✅ proceed to checkout
+                        navigate("/checkout-items", {
+                          state: { couponDiscount }, // wrapped in object
+                        });
                       }}
                     >
                       Check out{" "}

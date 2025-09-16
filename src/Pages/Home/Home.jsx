@@ -50,6 +50,8 @@ const Home = () => {
       bannerClass: "Left1",
     },
   ];
+  console.log(process.env.REACT_APP_API);
+
   return (
     <div>
       <NavBar />

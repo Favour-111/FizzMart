@@ -838,13 +838,17 @@ const Checkout = () => {
                     </div>
                   </div>
                   <div className="checkout-items-prices">
-                    {fetchLoader || addressList.length === 0 ? (
+                    {fetchLoader ||
+                    addressList.length === 0 ||
+                    totalFee === 0 ? (
                       <button
                         className="disabled"
                         onClick={() =>
-                          toast.error(
-                            "Kindly add your address before proceeding to payment"
-                          )
+                          totalFee === 0
+                            ? toast.error("Kindly Select a new Address ")
+                            : toast.error(
+                                "Kindly add your address before proceeding to payment"
+                              )
                         }
                       >
                         Pay Now ₦

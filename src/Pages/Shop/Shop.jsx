@@ -79,12 +79,8 @@ const Shop = ({ page }) => {
   const filteredProducts = useMemo(() => {
     return product.filter((p) => {
       if (page && p.category !== page) return false;
-
-      // Stock filter
-      if (inStock === "in Stock" && p.availability !== "in Stock") return false;
-      if (inStock === "out Of Stock" && p.availability !== "out Of Stock")
-        return false;
-
+      if (inStock === "out" && p.availability === "in Stock") return false;
+      if (inStock === "in" && p.availability === "out Of Stock") return false;
       // Price filters (using newPrice)
       if (minPrice && Number(p.newPrice) < Number(minPrice)) return false;
       if (maxPrice && Number(p.newPrice) > Number(maxPrice)) return false;
@@ -319,8 +315,8 @@ const Shop = ({ page }) => {
               }}
             >
               <option value="">All Stock</option>
-              <option value="in Stock">In Stock</option>
-              <option value="out Of Stock">Out of Stock</option>
+              <option value="in">In Stock</option>
+              <option value="out">Out of Stock</option>
             </select>
 
             {/* Price range */}

@@ -45,6 +45,7 @@ const Item = ({ product, category }) => {
     }
     return stars;
   };
+
   return (
     <div className="item-body">
       <div className="item-border">

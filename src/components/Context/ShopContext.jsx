@@ -83,7 +83,6 @@ const ShopContextProvider = (props) => {
       const response = await axios.get(
         `${process.env.REACT_APP_API}/getallProducts`
       );
-
       if (response) {
         console.log(response);
 
@@ -234,6 +233,8 @@ const ShopContextProvider = (props) => {
         });
         if (response) {
           toast.success("item successfully added to cart");
+        } else {
+          toast.error("Network error");
         }
 
         await fetchCartData();
@@ -349,6 +350,7 @@ const ShopContextProvider = (props) => {
 
         await fetchWishlistData();
       } catch (error) {
+        toast.error("Network error");
         console.error("Error adding to wishlist:", error);
       } finally {
         setWishlistLoader(null);

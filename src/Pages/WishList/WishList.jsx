@@ -4,7 +4,6 @@ import NavBar from "../../components/NavBar/NavBar";
 import NavSm from "../../components/NavSm/NavSm";
 import { LuTrash2 } from "react-icons/lu";
 import { ShopContext } from "../../components/Context/ShopContext";
-import product from "../../components/Product";
 import { GiShoppingCart } from "react-icons/gi";
 import Footer from "../../components/Footer/Footer";
 import toast from "react-hot-toast";
@@ -14,7 +13,7 @@ import { MdChevronRight } from "react-icons/md";
 import RecentlyViewed from "../../components/RecentlyViewed/RecentlyViewed";
 const WishList = () => {
   const navigate = useNavigate();
-  const { WishList, removeList, addToCart } = useContext(ShopContext);
+  const { WishList, product, removeList, addToCart } = useContext(ShopContext);
   const [stock, setStock] = useState(true);
   const wishlistProduct = product.filter(
     (itm) => WishList && WishList[itm.id] && WishList[itm.id] > 0
@@ -72,12 +71,18 @@ const WishList = () => {
                           />
                         </td>
                         <td>
-                          <div className="WishList-Prod-name">{item.name}</div>
-                          <div className="wishList-Prod-size">1 Kg</div>
+                          <div className="WishList-Prod-name">
+                            {item.productName}
+                          </div>
+                          <div className="wishList-Prod-size">
+                            {item.variation}
+                          </div>
                         </td>
-                        <td className="Price">₦{item.newPrice}</td>
+                        <td className="Price">
+                          ₦{Number(item.newPrice).toLocaleString()}
+                        </td>
                         <td>
-                          {stock ? (
+                          {item.availability === "in Stock" ? (
                             <div className="inStock">In Stock</div>
                           ) : (
                             <div className="outStock">Out Of Stock</div>
@@ -104,18 +109,33 @@ const WishList = () => {
                     </div>
                     <div className="wishlist-itm-sm">
                       <div>Name</div>
-                      <div>{item.name}</div>
+                      <div>{item.producName}</div>
                     </div>
                     <div className="wishlist-itm-sm">
                       <div>Price</div>
-                      <div>{item.newPrice}</div>
+                      <div>₦{Number(item.newPrice).toLocaleString()}</div>
+                    </div>
+                    <div className="wishlist-itm-sm">
+                      <div>Stock</div>
+                      <div>
+                        {" "}
+                        <div>
+                          {item.availability === "in Stock" ? (
+                            <div className="inStock">In Stock</div>
+                          ) : (
+                            <div className="outStock">Out Of Stock</div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                     <div className="wishlist-itm-sm">
                       <div>Remove</div>
                       <div
                         onClick={() => {
                           removeList(item.id);
-                          toast.success(`${item.name} removed from WIsh List`);
+                          toast.success(
+                            `${item.productName} removed from WIsh List`
+                          );
                         }}
                       >
                         {" "}

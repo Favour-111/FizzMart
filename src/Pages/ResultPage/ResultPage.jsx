@@ -72,7 +72,8 @@ const ResultPage = () => {
   const { search } = useLocation();
 
   const params = new URLSearchParams(search);
-  const searchedItem = params.get("search");
+  const searchedItem = params.get("search")?.trim().toLowerCase() || "";
+
   console.log(searchedItem);
 
   const [rating, setRating] = useState(""); // 1–5
@@ -81,18 +82,17 @@ const ResultPage = () => {
 
   const filteredProducts = useMemo(() => {
     return product.filter((p) => {
-      if (
-        searchedItem &&
-        !p.productName.toLowerCase().includes(searchedItem.toLowerCase())
-      ) {
+      // Search filter
+      if (searchedItem && !p.productName.toLowerCase().includes(searchedItem)) {
         return false;
       }
+
       // Stock filter
       if (inStock === "in Stock" && p.availability !== "in Stock") return false;
       if (inStock === "out Of Stock" && p.availability !== "out Of Stock")
         return false;
 
-      // Price filters (using newPrice)
+      // Price filters
       if (minPrice && Number(p.newPrice) < Number(minPrice)) return false;
       if (maxPrice && Number(p.newPrice) > Number(maxPrice)) return false;
 
@@ -101,7 +101,7 @@ const ResultPage = () => {
 
       return true;
     });
-  }, [inStock, minPrice, maxPrice, rating, product]);
+  }, [inStock, minPrice, maxPrice, rating, product, searchedItem]);
 
   // --- SORT ---
   const sortedProducts = useMemo(() => {

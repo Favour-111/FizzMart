@@ -2,7 +2,6 @@ import React, { useContext, useMemo, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import NavSm from "../../components/NavSm/NavSm";
 import Item from "../../components/Item/Item";
-import product from "../../components/Product";
 import Footer from "../../components/Footer/Footer";
 import {
   MdChevronRight,
@@ -56,7 +55,7 @@ const RatingFilter = ({ rating, setRating }) => {
 };
 
 const Shop = ({ page }) => {
-  const { categories, categoryLoader } = useContext(ShopContext);
+  const { categories, product, categoryLoader } = useContext(ShopContext);
   const navigate = useNavigate();
   // --- STATE ---
   const [filter, setFilter] = useState(false);
@@ -75,11 +74,11 @@ const Shop = ({ page }) => {
   const filteredProducts = useMemo(() => {
     return product.filter((p) => {
       if (!p.subcategories.includes(page)) return false;
-      if (inStock === "in" && !p.inStock) return false;
-      if (inStock === "out" && p.inStock) return false;
+      if (inStock === "out" && p.availability === "in Stock") return false;
+      if (inStock === "in" && p.availability === "out Of Stock") return false;
       if (minPrice && Number(p.newPrice) < Number(minPrice)) return false;
       if (maxPrice && Number(p.newPrice) > Number(maxPrice)) return false;
-      if (rating && Number(p.rating) < Number(rating)) return false;
+      if (rating && Number(p.Rating) < Number(rating)) return false;
       return true;
     });
   }, [page, inStock, minPrice, maxPrice, rating]);
@@ -95,7 +94,7 @@ const Shop = ({ page }) => {
         arr.sort((a, b) => Number(a.newPrice) - Number(b.newPrice));
         break;
       case "rating":
-        arr.sort((a, b) => Number(b.rating) - Number(a.rating));
+        arr.sort((a, b) => Number(b.Rating) - Number(a.Rating));
         break;
       case "recent":
         arr.sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt));
