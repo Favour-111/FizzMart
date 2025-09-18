@@ -78,8 +78,12 @@ const NavSm = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       navigate(`/Result?search=${encodeURIComponent(query)}`);
+      setResults(false);
+      setOpenNav(false);
     } else if (e.key === "return") {
       navigate(`/Result?search=${encodeURIComponent(query)}`);
+      setResults(false);
+      setOpenNav(false);
     }
   };
   const userId = localStorage.getItem("userId");
@@ -118,6 +122,7 @@ const NavSm = () => {
                     onClick={() => {
                       navigate(`/Result?search=${encodeURIComponent(query)}`);
                       setResults(false);
+                      setOpenNav(false);
                     }}
                     className="search-item-container"
                   >
@@ -196,7 +201,11 @@ const NavSm = () => {
                       Home
                     </Link>
                   </li>
-
+                  <li>
+                    <Link to="/store-categories" className="nav-sm-list-item">
+                      Categories
+                    </Link>
+                  </li>
                   {/* Account */}
                   <li onClick={() => toggleMenu("account")}>
                     <Link className="nav-sm-list-item">Account</Link>
@@ -369,8 +378,8 @@ const NavSm = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/store-categories" className="nav-sm-list-item">
-                    Categories
+                  <Link className="nav-sm-list-item" to="/faq">
+                    FAQ
                   </Link>
                 </li>
               </ul>

@@ -37,6 +37,7 @@ const ShopContextProvider = (props) => {
   const [wishlistLoader, setWishlistLoader] = useState(null); // track wishlist item being updated
   const [categoryLoader, setCategoryLoader] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [managers, setManagers] = useState([]);
   const userId = localStorage.getItem("userId");
   const fetchNotification = async () => {
     try {
@@ -142,6 +143,17 @@ const ShopContextProvider = (props) => {
       console.error("Error fetching wishlist:", error);
     }
   };
+  const Managers = async () => {
+    const fetchManagers = await axios.get(
+      `${process.env.REACT_APP_API}/referrals`
+    );
+    setManagers(fetchManagers.data.message);
+    if (fetchManagers) {
+      toast.success("managers fetched");
+    } else {
+      toast.error("Error fetching managers");
+    }
+  };
   useEffect(() => {
     // 🔥 Listen for product added
     socket.on("product-added", (newProduct) => {
@@ -213,6 +225,7 @@ const ShopContextProvider = (props) => {
     fetchWishlistData();
     fetchAllCategory();
     fetchAllProduct();
+    Managers();
   }, []);
 
   // 🔹 add to cart
@@ -414,6 +427,7 @@ const ShopContextProvider = (props) => {
     ProdLoader,
     notifications,
     setNotification,
+    managers,
     loading,
     notificationLoader,
     fetchNotification,

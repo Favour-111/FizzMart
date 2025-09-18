@@ -213,6 +213,125 @@
 .abt-heart-1:hover {
   background-color: #ededed;
 }
+.comment-section-container {
+  margin-top: 70px;
+}
+.comment-head {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.styled-quill-wrapper {
+  border: 1px solid #e5e7eb; /* light gray border */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  padding: 0;
+  height: 200px;
+  overflow: scroll;
+  margin-top: 20px;
+  scrollbar-width: none !important;
+}
+.comment-head {
+  font-weight: 700;
+  font-size: 21px;
+  color: #21313c;
+  margin-top: 20px;
+  span {
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    background-color: orangered;
+  }
+}
+.sort-comment-cont {
+  color: #787878;
+  font-size: 14px;
+}
+/* Toolbar styling */
+.custom-quill .ql-toolbar {
+  /* or any custom font */
+  color: #4b5563 !important;
+  padding: 20px;
+  border-left: 1px solid #ffffff !important;
+  border-right: 1px solid #ffffff !important;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #00000024 !important;
+  margin-bottom: 6px;
+}
+
+/* Toolbar buttons */
+.custom-quill .ql-toolbar button {
+  border: none !important;
+  background: none;
+  color: #0f2f6f !important; /* gray-500 */
+  padding: 4px 6px;
+  margin-right: 4px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.custom-quill .ql-toolbar button:hover,
+.custom-quill .ql-toolbar button.ql-active {
+  background-color: #eef2ff; /* light purple bg */
+  color: #6366f1; /* indigo-500 */
+}
+
+/* Editor container */
+.custom-quill .ql-container {
+  border: none !important;
+  font-size: 14px;
+  color: #4b5563; /* text-gray-600 */
+  padding: 0;
+}
+
+/* Actual input area */
+.custom-quill .ql-editor {
+  min-height: 100px;
+  padding: 8px 10px;
+}
+.comment-container {
+  margin-top: 10px;
+}
+.comment-item {
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+  .icon {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: #f1f1f1;
+  }
+}
+.likes-buttons {
+  color: #787878;
+  transition: 200ms;
+  font-size: 15px;
+  font-weight: 600;
+}
+.likes-buttons:hover {
+  color: orangered;
+}
+.review {
+  margin-top: 5px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.review-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+.timer {
+  font-size: 13px;
+  color: #787878;
+  font-weight: 400;
+}
 @media screen and (max-width: 650px) {
   .product-about-container {
     flex-direction: column;

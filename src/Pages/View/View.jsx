@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./View.css";
 import NavBar from "../../components/NavBar/NavBar";
 import NavSm from "../../components/NavSm/NavSm";
@@ -8,11 +8,16 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Item from "../../components/Item/Item";
 // import your product array
 import { GoPlus } from "react-icons/go";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { LuMinus } from "react-icons/lu";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import { TbArrowsSort } from "react-icons/tb";
 import Footer from "../../components/Footer/Footer";
 import { ShopContext } from "../../components/Context/ShopContext";
 import toast, { Toaster } from "react-hot-toast";
+import { RiUser6Line } from "react-icons/ri";
+import { AiFillDislike, AiFillLike } from "react-icons/ai";
 const View = () => {
   const {
     addToCart,
@@ -56,7 +61,14 @@ const View = () => {
     item.subcategories.includes(page)
   );
   console.log(productFilter);
-
+  const [value, setValue] = useState("");
+  const modules = {
+    toolbar: [
+      ["bold", "italic", "underline"], // text formatting
+      [{ list: "ordered" }, { list: "bullet" }], // lists
+      ["clean"], // remove formatting
+    ],
+  };
   return (
     <div>
       <NavBar />
@@ -230,8 +242,129 @@ const View = () => {
             }}
           ></div>
         </div>
+        <div className="comment-section-container">
+          <div className="header-sub-head">Comment</div>
+          <div className="related-head">Product Review Section</div>
+          <div className="New-ProductContent">check out Customers reviews</div>
+
+          <div className="styled-quill-wrapper">
+            <ReactQuill
+              theme="snow"
+              className="custom-quill"
+              value={value}
+              onChange={setValue}
+              modules={modules} // 👈 pass custom toolbar
+              placeholder="Write your comment now..."
+            />
+          </div>
+          <div className="d-flex align-items-center justify-content-between">
+            <div className="comment-head">
+              Comments <span>26</span>
+            </div>
+            <div className="sort-comment-cont">
+              Most Recent <TbArrowsSort />
+            </div>
+          </div>
+          <div className="comment-container">
+            <div className="comment-item">
+              <div>
+                <div className="icon">
+                  <RiUser6Line />
+                </div>
+              </div>
+              <div>
+                <div className="d-flex align-items-center gap-2">
+                  <div className="review-name">omojola obaloluwa favour</div>
+                </div>
+                <div className="timer">58 minutes ago</div>
+                <div className="review">
+                  i really don't like the product i got it doesn't work well but
+                  it was delivered fast
+                </div>
+                <div className=" d-flex align-items-center gap-3 mt-2">
+                  <div className="d-flex align-items-center gap-1 likes-buttons">
+                    <div>
+                      <AiFillLike size={18} className="mb-1" />
+                    </div>
+                    <div>54</div>
+                  </div>
+                  <div className="d-flex align-items-center gap-1 likes-buttons">
+                    <div>
+                      <AiFillDislike size={18} className="mb-1" />
+                    </div>
+                    <div>3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="comment-item">
+              <div>
+                <div className="icon">
+                  <RiUser6Line />
+                </div>
+              </div>
+              <div>
+                <div className="d-flex align-items-center gap-2">
+                  <div className="review-name">omojola obaloluwa favour</div>
+                </div>
+                <div className="timer">58 minutes ago</div>
+                <div className="review">
+                  i really don't like the product i got it doesn't work well but
+                  it was delivered fast
+                </div>
+                <div className=" d-flex align-items-center gap-3 mt-2">
+                  <div className="d-flex align-items-center gap-1 likes-buttons">
+                    <div>
+                      <AiFillLike size={18} className="mb-1" />
+                    </div>
+                    <div>54</div>
+                  </div>
+                  <div className="d-flex align-items-center gap-1 likes-buttons">
+                    <div>
+                      <AiFillDislike size={18} className="mb-1" />
+                    </div>
+                    <div>3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="comment-item">
+              <div>
+                <div className="icon">
+                  <RiUser6Line />
+                </div>
+              </div>
+              <div>
+                <div className="d-flex align-items-center gap-2">
+                  <div className="review-name">omojola obaloluwa favour</div>
+                </div>
+                <div className="timer">58 minutes ago</div>
+                <div className="review">
+                  i really don't like the product i got it doesn't work well but
+                  it was delivered fast
+                </div>
+                <div className=" d-flex align-items-center gap-3 mt-2">
+                  <div className="d-flex align-items-center gap-1 likes-buttons">
+                    <div>
+                      <AiFillLike size={18} className="mb-1" />
+                    </div>
+                    <div>54</div>
+                  </div>
+                  <div className="d-flex align-items-center gap-1 likes-buttons">
+                    <div>
+                      <AiFillDislike size={18} className="mb-1" />
+                    </div>
+                    <div>3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="related-container">
-          <div className="related-head">Related Items</div>
+          <div className="header-sub-head">Products</div>
+          <div className="related-head">You May also like</div>
+          <div className="New-ProductContent">checkout related items</div>
           <div className="NewProducts mt-2">
             {productFilter.reverse().map((item) => {
               return <Item product={item} />;

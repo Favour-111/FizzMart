@@ -29,26 +29,34 @@ const Cart = () => {
     addToCart,
     getTotalValue,
     removeFromCart,
+    managers,
     loading,
   } = useContext(ShopContext);
   console.log(cartItems);
   const cartProducts = product.filter(
     (itm) => cartItems && cartItems[itm.id] && cartItems[itm.id] > 0
   );
-  const [Coupon, setCoupon] = useState(0);
-  const couponDiscount = (Coupon / 100) * Number(getTotalValue());
+  console.log(managers);
+
+  const [couponDiscount, setCouponDiscount] = useState(0);
+  const [coupon, setCoupon] = useState(0);
+
   const handleSubmit = () => {
-    if (text.value === "") {
-      toast.error("coupon input is required");
-    } else if (text.value === "SAVE4") {
-      setCoupon(4);
-      toast.success("coupon applied successfully");
+    const match = managers.find((item) => item.ReferralCode === text.value);
+
+    if (match) {
+      const discount =
+        (Number(match?.Percentage || 0) / 100) * Number(getTotalValue());
+      setCouponDiscount(discount);
+      setCoupon(match?.ReferralCode || 0);
+      console.log("Discount applied:", discount);
+      toast.success(`${match.FullName} referral Code was successful`);
     } else {
-      setCoupon(0);
-      toast.error("invalid coupon code");
+      setCouponDiscount(0); // reset when invalid
+      toast.error("Invalid referral code");
     }
-    // console.log(Coupon);
   };
+
   return (
     <div>
       <NavBar />
@@ -178,16 +186,13 @@ const Cart = () => {
                   </div>
 
                   <div className="price">
-                    <div>Referral-discount</div>
-                    <div className="cart-sub-price">{Coupon}% discount</div>
-                  </div>
-                  <div className="price">
                     <div>Referral code</div>
                     <div className="cart-sub-price">
                       ₦ {couponDiscount !== 0 ? "-" : ""}{" "}
                       {couponDiscount.toLocaleString()}
                     </div>
                   </div>
+
                   <div className="price">
                     <input
                       type="text"
@@ -200,13 +205,20 @@ const Cart = () => {
                       Apply
                     </button>
                   </div>
+
                   <div className="line"></div>
+
                   <div className="price">
                     <div>Total</div>
                     <div className="cart-sub-price">
                       ₦ {(getTotalValue() - couponDiscount).toLocaleString()}{" "}
                       <span>
-                        {couponDiscount !== 0 ? " (-2 % discount)" : null}
+                        {couponDiscount !== 0
+                          ? ` (-${(
+                              (couponDiscount / getTotalValue()) *
+                              100
+                            ).toFixed(0)}% discount)`
+                          : null}
                       </span>
                     </div>
                   </div>
@@ -244,7 +256,7 @@ const Cart = () => {
 
                         // ✅ proceed to checkout
                         navigate("/checkout-items", {
-                          state: { couponDiscount }, // wrapped in object
+                          state: { couponDiscount, text }, // wrapped in object
                         });
                       }}
                     >

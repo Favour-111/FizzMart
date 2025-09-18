@@ -38,13 +38,13 @@
     background-position: -200% 0;
   }
 }
+
 @media screen and (max-width: 990px) {
   .Category-skeleton-card {
-    width: 30% !important;
+    width: 31% !important;
+    padding: 0 !important;
   }
-}
-@media screen and (max-width: 990px) {
-  .Category-skeleton-card {
-    width: 33% !important;
+  .Category-skeleton-img {
+    height: 120px;
   }
 }

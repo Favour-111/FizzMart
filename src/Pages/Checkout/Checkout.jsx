@@ -27,8 +27,7 @@ const Checkout = () => {
   const { product, cartItems, clearCart, getTotalValue } =
     useContext(ShopContext);
   const location = useLocation();
-  const coupon = location.state || {};
-  const { couponDiscount } = coupon;
+  const { couponDiscount, text } = location.state || {};
   const cartProducts = product.filter(
     (itm) => cartItems && cartItems[itm.id] && cartItems[itm.id] > 0
   );
@@ -120,6 +119,7 @@ const Checkout = () => {
     paymentStatus: "",
     paymentReference: "",
     deliveryFee: totalFee,
+    referral: text.value,
     // orderStatus: "ongoing",
     phoneNumber: "",
     secondNumber: "",
@@ -128,7 +128,6 @@ const Checkout = () => {
     state: "",
     region: "",
   });
-
   useEffect(() => {
     if (cartProducts?.length > 0) {
       const updatedCartItems = cartProducts.map((item) => ({
@@ -365,6 +364,7 @@ const Checkout = () => {
           OrderIdentity,
           orderId: transaction.reference,
           name: fetchUser?.FullName,
+          referral: text?.value,
           email: fetchUser?.email,
           address: selectedAddress,
           phone: fetchUser?.phoneNumber,
@@ -425,6 +425,7 @@ const Checkout = () => {
           phoneNumber: fetchUser?.phoneNumber || "",
           SecondNumber: selectedAddress?.SparePhoneNumber || "",
           DeliveryFee: totalFee,
+          referral: text?.value,
           OrderPrice: getTotalValue() - (couponDiscount || 0),
           street: selectedAddress?.street,
           Region: selectedAddress?.Region,
@@ -451,6 +452,7 @@ const Checkout = () => {
       UserID: localStorage.getItem("userId"),
       name: fetchUser?.FullName,
       email: fetchUser?.email,
+      referral: text?.value,
       phoneNumber: fetchUser?.phoneNumber || "",
       SecondNumber: selectedAddress?.SparePhoneNumber || "",
       DeliveryFee: totalFee, // ✅ dynamic
@@ -493,6 +495,7 @@ const Checkout = () => {
       setLoaderPage(false);
     }
   };
+  console.log(text?.value);
 
   return (
     <div>

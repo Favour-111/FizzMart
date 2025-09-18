@@ -58,6 +58,7 @@ const Shop = ({ page }) => {
   const { categories, product, categoryLoader } = useContext(ShopContext);
   const navigate = useNavigate();
   // --- STATE ---
+
   const [filter, setFilter] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,10 +71,16 @@ const Shop = ({ page }) => {
   const [rating, setRating] = useState(""); // 1–5
   let filteredCategory;
   // --- FILTER (Dry Goods only) ---
+  console.log(product);
+  const include = product?.find((p) => p?.subcategories === "Turkey");
+  console.log(include);
 
   const filteredProducts = useMemo(() => {
     return product.filter((p) => {
-      if (!p.subcategories.includes(page)) return false;
+      const subs =
+        p.subcategories?.flatMap((s) => s.split(",").map((x) => x.trim())) ||
+        [];
+      if (!subs.includes(page)) return false;
       if (inStock === "out" && p.availability === "in Stock") return false;
       if (inStock === "in" && p.availability === "out Of Stock") return false;
       if (minPrice && Number(p.newPrice) < Number(minPrice)) return false;

@@ -61,6 +61,7 @@ const NavBar = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       navigate(`/Result?search=${encodeURIComponent(query)}`);
+      setResults(false);
     }
   };
   const userId = localStorage.getItem("userId");
@@ -277,7 +278,11 @@ const NavBar = () => {
                 Home
               </Link>{" "}
             </li>
-
+            <li>
+              <Link className="nav-Itm" to="/store-categories">
+                Categories
+              </Link>
+            </li>
             <li
               className="nav-Itm"
               onMouseOver={() => setAccountDrop(true)}
@@ -385,8 +390,8 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link className="nav-Itm" to="/store-categories">
-                Categories
+              <Link className="nav-Itm" to="/faq">
+                FAQ
               </Link>
             </li>
           </ul>

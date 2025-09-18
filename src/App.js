@@ -29,6 +29,7 @@ import ForgotPass from "./Pages/ForgotPass/ForgotPass";
 import Reset from "./Pages/Reset/Reset";
 import { useContext } from "react";
 import { ShopContext } from "./components/Context/ShopContext";
+import FAQ from "./Pages/FAQ/FAQ";
 function App() {
   const { categories, notifications, categoryLoader } = useContext(ShopContext);
   return (
@@ -74,6 +75,7 @@ function App() {
         <Route element={<ForgotPass />} path="/Password-reset" />
         <Route element={<Reset />} path="/users/reset-password/:id/:token" />
         <Route element={<OrderConfirmation />} path="/Order-successful/:id" />
+        <Route element={<FAQ />} path="/faq" />
         {/* // for store categories = store-categories */}
       </Routes>
       <Toaster
