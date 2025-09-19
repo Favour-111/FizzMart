@@ -33,6 +33,7 @@
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  background: url("https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
   img {
     width: 460px;
     position: absolute;
@@ -44,9 +45,11 @@
 }
 .Left1 {
   background-color: #f5f3e7;
+  background: url("https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
 }
 .Left2 {
   background-color: #d6ebee;
+  background: url("https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
 }
 .banner-right {
   width: 40%;
@@ -60,7 +63,8 @@
   width: 100%;
   height: 265px;
   border-radius: 10px;
-  background-color: #dcebff;
+  background: url("https://www.transparentpng.com/download/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
+  background-color: #cde2ff;
   position: relative;
   img {
     position: absolute;
@@ -71,6 +75,7 @@
 .banner-right-item-bottom {
   padding: 20px 30px;
   display: flex;
+  background: url("https://www.transparentpng.com/download/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
   flex-direction: column;
   justify-content: center;
   width: 100%;

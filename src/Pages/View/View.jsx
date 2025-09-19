@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./View.css";
 import NavBar from "../../components/NavBar/NavBar";
 import NavSm from "../../components/NavSm/NavSm";
@@ -11,13 +11,14 @@ import { GoPlus } from "react-icons/go";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { LuMinus } from "react-icons/lu";
-import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import { IoIosPaperPlane, IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { TbArrowsSort } from "react-icons/tb";
 import Footer from "../../components/Footer/Footer";
 import { ShopContext } from "../../components/Context/ShopContext";
 import toast, { Toaster } from "react-hot-toast";
 import { RiUser6Line } from "react-icons/ri";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
+import axios from "axios";
 const View = () => {
   const {
     addToCart,
@@ -30,8 +31,13 @@ const View = () => {
   } = useContext(ShopContext);
   const { id } = useParams();
 
-  const ProductFind = product.find((item) => item?._id === id);
+  const ProductFind = product.find((item) => item?._id === id) || null;
 
+  const [user, setUser] = useState([]);
+
+  const [comment, setComment] = useState([]);
+  const [loader, setLoader] = useState(false);
+  const [addLoader, setAddLoader] = useState(false);
   const page = ProductFind?.subcategories[0];
   // pick the first product for now
   const currentProduct = product[0];
@@ -60,7 +66,6 @@ const View = () => {
   const productFilter = product.filter((item) =>
     item.subcategories.includes(page)
   );
-  console.log(productFilter);
   const [value, setValue] = useState("");
   const modules = {
     toolbar: [
@@ -69,6 +74,120 @@ const View = () => {
       ["clean"], // remove formatting
     ],
   };
+  const allUser = async () => {
+    setLoader(true);
+    try {
+      const userFETCH = await axios.get(`${process.env.REACT_APP_API}/allUser`);
+      if (userFETCH) {
+        setUser(userFETCH.data.users);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoader(false);
+    }
+  };
+
+  const allComment = async () => {
+    setLoader(true);
+    try {
+      const commentFETCH = await axios.get(
+        `${process.env.REACT_APP_API}/comments`
+      );
+      if (commentFETCH) {
+        setComment(commentFETCH.data.message);
+        console.log(comment);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoader(false);
+    }
+  };
+  useEffect(() => {
+    allComment();
+    allUser();
+  }, []);
+
+  const userId = localStorage.getItem("userId");
+  const fetchUser = user.find((item) => item._id === userId) || null;
+  const sendComment = async () => {
+    if (!fetchUser) {
+      toast.error("User not found, please log in first");
+      return;
+    }
+    if (!value.trim()) {
+      toast.error("Comment cannot be empty");
+      return;
+    }
+
+    const formData = {
+      name: fetchUser?.FullName,
+      product_id: id,
+      content: value,
+    };
+    console.log(formData);
+
+    try {
+      setAddLoader(true);
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}/addComment`,
+        formData
+      );
+
+      setComment((prev) => [...prev, response.data]); // append new comment
+      setValue(""); // clear editor
+      toast.success("Comment submitted");
+    } catch (error) {
+      toast.error("Error adding review");
+      console.log(error);
+    } finally {
+      setAddLoader(false);
+    }
+  };
+  const handleLike = async (commentId) => {
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API}/${commentId}/like`,
+        { userId }
+      );
+      // Update local state with new comment
+      setComment((prev) =>
+        prev.map((c) => (c._id === commentId ? res.data : c))
+      );
+      if (res) {
+        toast.success("comment has been liked");
+      } else {
+        toast.error("error liking comment");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error(err);
+    }
+  };
+
+  const handleUnlike = async (commentId) => {
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_API}/${commentId}/unlike`,
+        {
+          userId,
+        }
+      );
+      setComment((prev) =>
+        prev.map((c) => (c._id === commentId ? res.data : c))
+      );
+      if (res) {
+        toast.success("comment has been disliked");
+      } else {
+        toast.error("error liking disliked");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error(err);
+    }
+  };
+
   return (
     <div>
       <NavBar />
@@ -149,7 +268,7 @@ const View = () => {
             <div className="cont-2">
               <div className="abt-buttons">
                 <div>
-                  {ProductFind.availability === "in Stock" ? (
+                  {ProductFind?.availability === "in Stock" ? (
                     cartItems[ProductFind?.id] > 0 ? (
                       <div className="abt-counter-body">
                         <button
@@ -257,108 +376,108 @@ const View = () => {
               placeholder="Write your comment now..."
             />
           </div>
+          <button className="send-button" onClick={() => sendComment()}>
+            {addLoader ? "Sending..." : "Send"} <IoIosPaperPlane />
+          </button>
           <div className="d-flex align-items-center justify-content-between">
             <div className="comment-head">
-              Comments <span>26</span>
+              Comments{" "}
+              <span>{comment.filter((c) => c.product_id === id).length}</span>
             </div>
             <div className="sort-comment-cont">
               Most Recent <TbArrowsSort />
             </div>
           </div>
           <div className="comment-container">
-            <div className="comment-item">
-              <div>
-                <div className="icon">
-                  <RiUser6Line />
-                </div>
-              </div>
-              <div>
-                <div className="d-flex align-items-center gap-2">
-                  <div className="review-name">omojola obaloluwa favour</div>
-                </div>
-                <div className="timer">58 minutes ago</div>
-                <div className="review">
-                  i really don't like the product i got it doesn't work well but
-                  it was delivered fast
-                </div>
-                <div className=" d-flex align-items-center gap-3 mt-2">
-                  <div className="d-flex align-items-center gap-1 likes-buttons">
+            {comment
+              .filter((item) => item.product_id === id)
+              .map((item) => {
+                return (
+                  <div className="comment-item">
                     <div>
-                      <AiFillLike size={18} className="mb-1" />
+                      <div className="icon">
+                        <RiUser6Line />
+                      </div>
                     </div>
-                    <div>54</div>
-                  </div>
-                  <div className="d-flex align-items-center gap-1 likes-buttons">
                     <div>
-                      <AiFillDislike size={18} className="mb-1" />
+                      <div className="d-flex align-items-center gap-2">
+                        <div className="review-name">
+                          {item.name === fetchUser?.FullName
+                            ? "you"
+                            : item.name}{" "}
+                        </div>
+                      </div>
+                      <div className="timer">58 minutes ago</div>
+                      <div
+                        className="review"
+                        dangerouslySetInnerHTML={{ __html: item.content }}
+                      />
+                      <div className=" d-flex align-items-center gap-3 mt-2">
+                        <div className="d-flex align-items-center gap-1 likes-buttons">
+                          <div
+                            className="d-flex align-items-center gap-1 likes-buttons"
+                            onClick={() => handleLike(item._id)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <AiFillLike
+                              color={
+                                item.likedBy.includes(userId)
+                                  ? "tomato"
+                                  : "#787878"
+                              }
+                              size={18}
+                              className="mb-1"
+                            />
+                            <div
+                              className={
+                                item.likedBy.includes(userId)
+                                  ? "item-like"
+                                  : "item-unlike"
+                              }
+                              style={{
+                                color: item.likedBy.includes(userId)
+                                  ? "tomato"
+                                  : "#787878",
+                              }}
+                            >
+                              {item.likes}
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          className="d-flex align-items-center gap-1 likes-buttons"
+                          onClick={() => handleUnlike(item._id)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <AiFillDislike
+                            color={
+                              item.unlikedBy.includes(userId)
+                                ? "tomato"
+                                : "#787878"
+                            }
+                            size={18}
+                            className=""
+                          />
+                          <div
+                            className={
+                              item.unlikedBy.includes(userId)
+                                ? "item-unlike-active"
+                                : "item-unlike"
+                            }
+                            style={{
+                              color: item.unlikedBy.includes(userId)
+                                ? "tomato"
+                                : "#787878",
+                            }}
+                          >
+                            {item.unlikes}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div>3</div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="comment-item">
-              <div>
-                <div className="icon">
-                  <RiUser6Line />
-                </div>
-              </div>
-              <div>
-                <div className="d-flex align-items-center gap-2">
-                  <div className="review-name">omojola obaloluwa favour</div>
-                </div>
-                <div className="timer">58 minutes ago</div>
-                <div className="review">
-                  i really don't like the product i got it doesn't work well but
-                  it was delivered fast
-                </div>
-                <div className=" d-flex align-items-center gap-3 mt-2">
-                  <div className="d-flex align-items-center gap-1 likes-buttons">
-                    <div>
-                      <AiFillLike size={18} className="mb-1" />
-                    </div>
-                    <div>54</div>
-                  </div>
-                  <div className="d-flex align-items-center gap-1 likes-buttons">
-                    <div>
-                      <AiFillDislike size={18} className="mb-1" />
-                    </div>
-                    <div>3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="comment-item">
-              <div>
-                <div className="icon">
-                  <RiUser6Line />
-                </div>
-              </div>
-              <div>
-                <div className="d-flex align-items-center gap-2">
-                  <div className="review-name">omojola obaloluwa favour</div>
-                </div>
-                <div className="timer">58 minutes ago</div>
-                <div className="review">
-                  i really don't like the product i got it doesn't work well but
-                  it was delivered fast
-                </div>
-                <div className=" d-flex align-items-center gap-3 mt-2">
-                  <div className="d-flex align-items-center gap-1 likes-buttons">
-                    <div>
-                      <AiFillLike size={18} className="mb-1" />
-                    </div>
-                    <div>54</div>
-                  </div>
-                  <div className="d-flex align-items-center gap-1 likes-buttons">
-                    <div>
-                      <AiFillDislike size={18} className="mb-1" />
-                    </div>
-                    <div>3</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                );
+              })}
           </div>
         </div>
         <div className="related-container">

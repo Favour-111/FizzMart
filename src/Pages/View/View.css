@@ -294,6 +294,24 @@
 .comment-container {
   margin-top: 10px;
 }
+.send-button {
+  padding: 10px 30px;
+  color: #fff;
+  background-color: var(--text-blue);
+  border: none;
+  font-size: 13px;
+  border-radius: 20px;
+  margin-top: 10px;
+  transition: 200ms;
+}
+.item-like {
+  color: tomato !important;
+}
+
+.send-button:hover {
+  background-color: var(--text-blue);
+  opacity: 0.8;
+}
 .comment-item {
   display: flex;
   margin-top: 20px;
