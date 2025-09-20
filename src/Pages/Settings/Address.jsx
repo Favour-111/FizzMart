@@ -7,9 +7,11 @@ import { io } from "socket.io-client";
 import toast, { Toaster } from "react-hot-toast";
 import AddressLoader from "../../components/AddressLoader/AdressLoader";
 const Address = () => {
-  const socket = io(process.env.REACT_APP_API, {
-    transports: ["websocket"],
+  const socket = io("https://fizzserver-1.onrender.com", {
+    transports: ["websocket", "polling"], // allow fallback
+    withCredentials: true, // optional, helps if you use cookies
   });
+
   const [addressModal, setAddressModal] = useState(false);
   const [addressList, setAddressList] = useState([]);
   const [delLoader, setDeleteLoader] = useState(null);

@@ -5,8 +5,9 @@ import axios from "axios";
 import { io } from "socket.io-client";
 
 export const ShopContext = createContext(null);
-const socket = io(process.env.REACT_APP_API, {
-  transports: ["websocket"],
+const socket = io("https://fizzserver-1.onrender.com", {
+  transports: ["websocket", "polling"],
+  withCredentials: true,
 });
 
 const getDefaultCart = () => {

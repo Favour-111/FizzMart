@@ -13,7 +13,7 @@
   margin-top: 20px;
   color: var(--text-normal);
   display: flex;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   align-items: center;
   gap: 6px;
@@ -23,7 +23,7 @@
   .bread-crumb-link {
     color: var(--primary-blue);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
   }
 }
@@ -423,9 +423,9 @@ select {
 }
 @media screen and (max-width: 410px) {
   .bread-crumb {
-    font-size: 12px;
+    font-size: 14px;
     .bread-crumb-link {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 }

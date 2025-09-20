@@ -19,8 +19,9 @@ import { useNavigate } from "react-router";
 import Footer from "../../components/Footer/Footer";
 import AddressLoader from "../../components/AddressLoader/AdressLoader";
 const Checkout = () => {
-  const socket = io(process.env.REACT_APP_API, {
-    transports: ["websocket"],
+  const socket = io("https://fizzserver-1.onrender.com", {
+    transports: ["websocket", "polling"], // allow fallback
+    withCredentials: true, // optional, helps if you use cookies
   });
 
   const navigate = useNavigate();

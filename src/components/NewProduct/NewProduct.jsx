@@ -68,8 +68,13 @@ const NewProduct = () => {
                 })}
               {product.filter((item) => item.category === activeButton)
                 .length === 0 && (
-                <div className="no-products">
-                  No products found in this category.
+                <div className="no-prod-cont">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/04/16/51/95/360_F_416519523_wabFJQqgcyTX2uSsKaeeqQg0Okr91XYn.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                  <p className="no-prod-text">no product in this category</p>
                 </div>
               )}
             </div>

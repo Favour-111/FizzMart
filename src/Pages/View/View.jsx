@@ -21,6 +21,7 @@ import { RiUser6Line } from "react-icons/ri";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import axios from "axios";
 import SingleProdLoader from "../../components/SingleProdLoader/SingleProdLoader";
+import ProdSkeleton from "../../components/Skelenton/ProdSkelenton";
 const View = () => {
   const {
     addToCart,
@@ -30,6 +31,7 @@ const View = () => {
     addToList,
     WishList,
     removeList,
+    ProdLoader,
   } = useContext(ShopContext);
   const { id } = useParams();
 
@@ -71,9 +73,11 @@ const View = () => {
   const productFilter = product.filter((item) =>
     item.subcategories.includes(page)
   );
-  const socket = io(process.env.REACT_APP_API, {
-    transports: ["websocket"],
+  const socket = io("https://fizzserver-1.onrender.com", {
+    transports: ["websocket", "polling"], // allow fallback
+    withCredentials: true, // optional, helps if you use cookies
   });
+
   const [value, setValue] = useState("");
   const modules = {
     toolbar: [
@@ -572,9 +576,24 @@ const View = () => {
           <div className="related-head">You May also like</div>
           <div className="New-ProductContent">checkout related items</div>
           <div className="NewProducts mt-2">
-            {productFilter.reverse().map((item) => {
-              return <Item product={item} />;
-            })}
+            {ProdLoader ? (
+              <div className="NewProducts mt-4">
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+                <ProdSkeleton />
+              </div>
+            ) : (
+              productFilter.reverse().map((item) => {
+                return <Item product={item} />;
+              })
+            )}
           </div>
         </div>
       </div>

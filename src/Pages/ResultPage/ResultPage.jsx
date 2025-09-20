@@ -388,6 +388,7 @@ const ResultPage = () => {
                 <img
                   src="https://t4.ftcdn.net/jpg/04/16/51/95/360_F_416519523_wabFJQqgcyTX2uSsKaeeqQg0Okr91XYn.jpg"
                   alt=""
+                  loading="lazy"
                 />
                 <p className="no-prod-text">We couldn't find a match</p>
               </div>
