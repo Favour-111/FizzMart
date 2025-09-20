@@ -99,7 +99,7 @@ const NavSm = () => {
                 <div>
                   <LiaOpencart className="logo-icon" />
                 </div>
-                <div>FizzMart</div>
+                <div className="logo-txt">FizzMart</div>
               </div>
               <IoCloseOutline onClick={() => setOpenNav(false)} size={28} />
             </div>

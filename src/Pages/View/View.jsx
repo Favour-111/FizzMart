@@ -6,6 +6,7 @@ import { MdChevronRight } from "react-icons/md";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Item from "../../components/Item/Item";
+import { io } from "socket.io-client";
 // import your product array
 import { GoPlus } from "react-icons/go";
 import ReactQuill from "react-quill";
@@ -19,6 +20,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { RiUser6Line } from "react-icons/ri";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import axios from "axios";
+import SingleProdLoader from "../../components/SingleProdLoader/SingleProdLoader";
 const View = () => {
   const {
     addToCart,
@@ -37,7 +39,10 @@ const View = () => {
 
   const [comment, setComment] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [commentLoader, setCommentLoader] = useState(false);
   const [addLoader, setAddLoader] = useState(false);
+  const [sortType, setSortType] = useState("recent");
+
   const page = ProductFind?.subcategories[0];
   // pick the first product for now
   const currentProduct = product[0];
@@ -66,6 +71,9 @@ const View = () => {
   const productFilter = product.filter((item) =>
     item.subcategories.includes(page)
   );
+  const socket = io(process.env.REACT_APP_API, {
+    transports: ["websocket"],
+  });
   const [value, setValue] = useState("");
   const modules = {
     toolbar: [
@@ -87,7 +95,6 @@ const View = () => {
       setLoader(false);
     }
   };
-
   const allComment = async () => {
     setLoader(true);
     try {
@@ -105,8 +112,20 @@ const View = () => {
     }
   };
   useEffect(() => {
-    allComment();
+    // 🔥 Listen for product added
+    socket.on("comment-added", (newComment) => {
+      setComment((prev) => [...prev, newComment]);
+      toast.success(`new comment Added added!`);
+    });
+
+    // ✅ Cleanup to avoid duplicate listeners
+    return () => {
+      socket.off("comment-added");
+    };
+  }, [socket, setComment]);
+  useEffect(() => {
     allUser();
+    allComment();
   }, []);
 
   const userId = localStorage.getItem("userId");
@@ -147,6 +166,10 @@ const View = () => {
   };
   const handleLike = async (commentId) => {
     try {
+      if (!userId) {
+        toast.error("Please login to like comments");
+        return; // 🚨 stop execution if not logged in
+      }
       const res = await axios.post(
         `${process.env.REACT_APP_API}/${commentId}/like`,
         { userId }
@@ -167,6 +190,10 @@ const View = () => {
   };
 
   const handleUnlike = async (commentId) => {
+    if (!userId) {
+      toast.error("Please login to dislike comments");
+      return; // 🚨 stop execution if not logged in
+    }
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_API}/${commentId}/unlike`,
@@ -187,6 +214,31 @@ const View = () => {
       toast.error(err);
     }
   };
+  const commentFilter = comment.filter((item) => item.product_id === id);
+  console.log(comment);
+
+  const timeAgo = (date) => {
+    const now = new Date();
+    const past = new Date(date);
+    const seconds = Math.floor((now - past) / 1000);
+
+    if (seconds < 60) return `${seconds}s ago`;
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days}d ago`;
+    return past.toLocaleDateString(); // fallback full date
+  };
+
+  const sortedComments = [...commentFilter].sort((a, b) => {
+    if (sortType === "recent") {
+      return new Date(b.createdAt) - new Date(a.createdAt); // newest first
+    } else {
+      return new Date(a.createdAt) - new Date(b.createdAt); // oldest first
+    }
+  });
 
   return (
     <div>
@@ -211,144 +263,149 @@ const View = () => {
           </div>
           {page}
         </div>
-        <div className="product-about-container">
-          <div className="product-about-container-image">
-            <img src={ProductFind?.image} alt={ProductFind?.productName} />
-          </div>
-          <div className="product-about-container-content">
-            {ProductFind?.availability !== "in Stock" ? (
-              <div className="Stock-cont out">Out Of Stock</div>
-            ) : (
-              <div className="Stock-cont in">in Stock</div>
-            )}
-
-            <div className="cont-1">
-              <div className="prod-abt-category">
-                {currentProduct?.category} <MdChevronRight /> {page}
-              </div>
-              <div className="prod-abt-name">{ProductFind?.productName}</div>
-
-              {/* rating stars */}
-              <div className="d-flex align-items-center gap-1 ">
-                <div className="prod-abt-rating">{renderStars()}</div>
-                <div className="ratin-num mt-1">
-                  ({ProductFind?.Rating} star)
-                </div>
-              </div>
-              {/* price (if available in your array) */}
-              <div className="d-flex align-items-center gap-1 mt-2">
-                <div className="prod-abt-price">
-                  ₦{Number(ProductFind?.newPrice).toLocaleString()}
-                </div>
-
-                {ProductFind?.oldPrice && (
-                  <>
-                    <div>/</div>
-                    <div className="prod-abt-Old-price">
-                      ₦{Number(ProductFind?.oldPrice).toLocaleString()}
-                    </div>
-                    <div className="item-discount-lg">
-                      (-
-                      {(
-                        ((Number(ProductFind?.oldPrice) -
-                          Number(ProductFind?.newPrice)) /
-                          Number(ProductFind?.oldPrice)) *
-                        100
-                      ).toFixed(0)}
-                      %)
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {ProductFind?.Variation && (
-                <div className="gram-cont">{ProductFind?.Variation}</div>
-              )}
+        {ProductFind ? (
+          <div className="product-about-container">
+            <div className="product-about-container-image">
+              <img src={ProductFind?.image} alt={ProductFind?.productName} />
             </div>
-            <div className="cont-2">
-              <div className="abt-buttons">
-                <div>
-                  {ProductFind?.availability === "in Stock" ? (
-                    cartItems[ProductFind?.id] > 0 ? (
-                      <div className="abt-counter-body">
-                        <button
-                          onClick={() => {
-                            addToCart(ProductFind?.id);
-                          }}
-                          className="abt-button-1"
-                        >
-                          <GoPlus />
-                        </button>
-                        <div className="about-counter">
-                          {cartItems[ProductFind?.id]}
-                        </div>
-                        <button
-                          onClick={() => {
-                            RemoveCart(ProductFind?.id);
-                            toast.success(
-                              `${ProductFind?.productName} removed`
-                            );
-                          }}
-                          className="abt-button-2"
-                        >
-                          <LuMinus />
-                        </button>
+            <div className="product-about-container-content">
+              {ProductFind?.availability !== "in Stock" ? (
+                <div className="Stock-cont out">Out Of Stock</div>
+              ) : (
+                <div className="Stock-cont in">in Stock</div>
+              )}
+
+              <div className="cont-1">
+                <div className="prod-abt-category">
+                  {currentProduct?.category} <MdChevronRight /> {page}
+                </div>
+                <div className="prod-abt-name">{ProductFind?.productName}</div>
+
+                {/* rating stars */}
+                <div className="d-flex align-items-center gap-1 ">
+                  <div className="prod-abt-rating">{renderStars()}</div>
+                  <div className="ratin-num mt-1">
+                    ({ProductFind?.Rating} star)
+                  </div>
+                </div>
+                {/* price (if available in your array) */}
+                <div className="d-flex align-items-center gap-1 mt-2">
+                  <div className="prod-abt-price">
+                    ₦{Number(ProductFind?.newPrice).toLocaleString()}
+                  </div>
+
+                  {ProductFind?.oldPrice && (
+                    <>
+                      <div>/</div>
+                      <div className="prod-abt-Old-price">
+                        ₦{Number(ProductFind?.oldPrice).toLocaleString()}
                       </div>
-                    ) : (
-                      <button
-                        className="abt-add-cart "
-                        onClick={() => {
-                          toast.success(
-                            `${ProductFind?.productName} added to cart`
-                          );
-                        }}
-                      >
-                        Add to Cart
-                      </button>
-                    )
-                  ) : (
-                    <button
-                      className="abt-add-cart opacity-75"
-                      onClick={() => {
-                        toast.success(
-                          `${ProductFind?.productName} is currently unavailable`
-                        );
-                      }}
-                    >
-                      Item Unavailable
-                    </button>
+                      <div className="item-discount-lg">
+                        (-
+                        {(
+                          ((Number(ProductFind?.oldPrice) -
+                            Number(ProductFind?.newPrice)) /
+                            Number(ProductFind?.oldPrice)) *
+                          100
+                        ).toFixed(0)}
+                        %)
+                      </div>
+                    </>
                   )}
                 </div>
 
-                {WishList[ProductFind?.id] > 0 ? (
-                  <button
-                    className="abt-heart-1"
-                    onClick={() => {
-                      removeList(ProductFind?.id);
-                      toast.success(
-                        `${ProductFind?.productName} removed from wish list`
-                      );
-                    }}
-                  >
-                    <IoMdHeart size={20} />
-                  </button>
-                ) : (
-                  <button
-                    className="abt-heart-1"
-                    onClick={() => {
-                      addToList(ProductFind?.id);
-                      toast.success(
-                        `${ProductFind?.productName} added to wish list`
-                      );
-                    }}
-                  >
-                    <IoMdHeartEmpty size={20} />
-                  </button>
+                {ProductFind?.Variation && (
+                  <div className="gram-cont">{ProductFind?.Variation}</div>
                 )}
+              </div>
+              <div className="cont-2">
+                <div className="abt-buttons">
+                  <div>
+                    {ProductFind?.availability === "in Stock" ? (
+                      cartItems[ProductFind?.id] > 0 ? (
+                        <div className="abt-counter-body">
+                          <button
+                            onClick={() => {
+                              addToCart(ProductFind?.id);
+                            }}
+                            className="abt-button-1"
+                          >
+                            <GoPlus />
+                          </button>
+                          <div className="about-counter">
+                            {cartItems[ProductFind?.id]}
+                          </div>
+                          <button
+                            onClick={() => {
+                              RemoveCart(ProductFind?.id);
+                              toast.success(
+                                `${ProductFind?.productName} removed`
+                              );
+                            }}
+                            className="abt-button-2"
+                          >
+                            <LuMinus />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          className="abt-add-cart"
+                          onClick={() => {
+                            toast.success(
+                              `${ProductFind?.productName} added to cart`
+                            );
+                          }}
+                        >
+                          Add to Cart
+                        </button>
+                      )
+                    ) : (
+                      <button
+                        className="abt-add-cart opacity-75"
+                        onClick={() => {
+                          toast.success(
+                            `${ProductFind?.productName} is currently unavailable`
+                          );
+                        }}
+                      >
+                        Item Unavailable
+                      </button>
+                    )}
+                  </div>
+
+                  {WishList[ProductFind?.id] > 0 ? (
+                    <button
+                      className="abt-heart-1"
+                      onClick={() => {
+                        removeList(ProductFind?.id);
+                        toast.success(
+                          `${ProductFind?.productName} removed from wish list`
+                        );
+                      }}
+                    >
+                      <IoMdHeart size={20} />
+                    </button>
+                  ) : (
+                    <button
+                      className="abt-heart-1"
+                      onClick={() => {
+                        addToList(ProductFind?.id);
+                        toast.success(
+                          `${ProductFind?.productName} added to wish list`
+                        );
+                      }}
+                    >
+                      <IoMdHeartEmpty size={20} />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <SingleProdLoader />
+        )}
+
         <div className="det-text-container">
           <div className="details-text-head">Product Details</div>
           <div className="details-line">
@@ -379,19 +436,38 @@ const View = () => {
           <button className="send-button" onClick={() => sendComment()}>
             {addLoader ? "Sending..." : "Send"} <IoIosPaperPlane />
           </button>
-          <div className="d-flex align-items-center justify-content-between">
+
+          <div className="mt-5 d-flex align-items-center justify-content-between">
             <div className="comment-head">
               Comments{" "}
               <span>{comment.filter((c) => c.product_id === id).length}</span>
             </div>
             <div className="sort-comment-cont">
-              Most Recent <TbArrowsSort />
+              <label htmlFor="sort">Sort by:</label>
+              <select
+                id="sort"
+                value={sortType}
+                onChange={(e) => setSortType(e.target.value)}
+              >
+                <option value="recent">Most Recent</option>
+                <option value="oldest">Oldest</option>
+              </select>
             </div>
           </div>
-          <div className="comment-container">
-            {comment
-              .filter((item) => item.product_id === id)
-              .map((item) => {
+          {loader ? (
+            <div className="comment-loading">
+              <div>
+                <div class="text-center">
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-2">loading</div>
+            </div>
+          ) : commentFilter?.length > 0 ? (
+            <div className="comment-container">
+              {sortedComments.map((item) => {
                 return (
                   <div className="comment-item">
                     <div>
@@ -407,7 +483,7 @@ const View = () => {
                             : item.name}{" "}
                         </div>
                       </div>
-                      <div className="timer">58 minutes ago</div>
+                      <div className="timer">{timeAgo(item.createdAt)}</div>
                       <div
                         className="review"
                         dangerouslySetInnerHTML={{ __html: item.content }}
@@ -478,7 +554,18 @@ const View = () => {
                   </div>
                 );
               })}
-          </div>
+            </div>
+          ) : (
+            <div className="noComment">
+              <div className="img">
+                <img
+                  src="https://cdn3d.iconscout.com/3d/premium/thumb/no-comment-3d-icon-png-download-7794550.png"
+                  alt=""
+                />
+              </div>
+              <div>There are no comment available</div>
+            </div>
+          )}
         </div>
         <div className="related-container">
           <div className="header-sub-head">Products</div>

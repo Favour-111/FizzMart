@@ -216,10 +216,6 @@
 .comment-section-container {
   margin-top: 70px;
 }
-.comment-head {
-  font-size: 25px;
-  font-weight: 700;
-}
 
 .styled-quill-wrapper {
   border: 1px solid #e5e7eb; /* light gray border */
@@ -235,7 +231,6 @@
   font-weight: 700;
   font-size: 21px;
   color: #21313c;
-  margin-top: 20px;
   span {
     color: white;
     font-weight: 700;
@@ -247,7 +242,17 @@
 }
 .sort-comment-cont {
   color: #787878;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 14px;
+  select {
+    border: none;
+    outline: none;
+  }
+  label {
+    margin-top: 5px !important;
+  }
 }
 /* Toolbar styling */
 .custom-quill .ql-toolbar {
@@ -307,7 +312,32 @@
 .item-like {
   color: tomato !important;
 }
-
+.noComment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 14px;
+  margin-top: 40px;
+  color: #787878;
+  font-weight: 500;
+  .img {
+    img {
+      width: 300px;
+    }
+  }
+}
+.comment-loading {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 14px;
+  color: #787878;
+  font-weight: 500;
+}
 .send-button:hover {
   background-color: var(--text-blue);
   opacity: 0.8;
@@ -338,12 +368,12 @@
 }
 .review {
   margin-top: 5px;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 15px;
 }
 .review-name {
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 15px;
 }
 .timer {
   font-size: 13px;

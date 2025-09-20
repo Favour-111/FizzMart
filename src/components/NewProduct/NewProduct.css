@@ -13,7 +13,7 @@
 
 .New-ProductHead {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 500 !important;
   color: var(--text-blue);
 }
 .new-prod-top {
@@ -61,8 +61,8 @@
   font-weight: 600;
   cursor: pointer;
   transform: 350ms;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 13px 20px;
+  border-radius: 20px !important;
   white-space: nowrap;
 }
 .filter-buttons:hover {

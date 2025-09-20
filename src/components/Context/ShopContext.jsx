@@ -40,20 +40,22 @@ const ShopContextProvider = (props) => {
   const [managers, setManagers] = useState([]);
   const userId = localStorage.getItem("userId");
   const fetchNotification = async () => {
-    try {
-      setNotificationLoader(true);
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/notifications/${userId}`
-      );
-      if (response) {
-        setNotification(response.data.notifications);
-      } else {
-        console.log("error fsetching notifications");
+    if (userId) {
+      try {
+        setNotificationLoader(true);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API}/notifications/${userId}`
+        );
+        if (response) {
+          setNotification(response.data.notifications);
+        } else {
+          console.log("error fsetching notifications");
+        }
+      } catch (error) {
+        toast.error("network error");
+      } finally {
+        setNotificationLoader(false);
       }
-    } catch (error) {
-      toast.error("network error");
-    } finally {
-      setNotificationLoader(false);
     }
   };
 
@@ -154,6 +156,7 @@ const ShopContextProvider = (props) => {
       toast.error("Error fetching managers");
     }
   };
+
   useEffect(() => {
     // 🔥 Listen for product added
     socket.on("product-added", (newProduct) => {
@@ -399,7 +402,11 @@ const ShopContextProvider = (props) => {
 
   // 🔹 count totals
   const getTotalCart = () => {
-    return Object.values(cartItems).reduce((a, b) => a + b, 0);
+    if (!cartItems || typeof cartItems !== "object") return 0;
+
+    return Object.values(cartItems)
+      .map((x) => Number(x) || 0) // ensure each value is a number
+      .reduce((a, b) => a + b, 0);
   };
 
   const getTotalList = () => {

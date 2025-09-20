@@ -18,7 +18,7 @@
 .cart-content {
   margin-top: 5px;
   color: var(--text-normal);
-  font-size: 13px;
+  font-size: 14px;
 }
 .cart-container {
   display: flex;
@@ -46,13 +46,13 @@
 }
 .cart-head {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-normal);
 }
 .shipping-head {
   color: #a9a9a9;
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .shipping-content {
   color: #787878;
@@ -67,7 +67,7 @@
   justify-content: space-between;
   font-weight: 500;
   color: var(--text-normal);
-  font-size: 14px;
+  font-size: 15px;
 }
 .cart-sub-price {
   font-size: 13px;
@@ -99,12 +99,12 @@
   border-bottom: 1px solid #e3e3e3;
 }
 .cart-image {
-  width: 50px;
+  width: 60px;
 }
 .cart-item-name {
-  font-size: 13px;
+  font-size: 14px;
   width: 100px;
-  font-weight: 700;
+  font-weight: 500;
 }
 .cart-weight {
   color: #787878;

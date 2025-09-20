@@ -19,8 +19,8 @@
 }
 .item-border {
   padding: 10px;
-  border: 1px solid #d3d3d378;
-  border-radius: 10px;
+  border: 1px solid #ededed;
+  border-radius: 25px;
 }
 .button-relative-container {
   position: absolute;
@@ -83,14 +83,14 @@
 }
 .item-category {
   color: #787878;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 400;
   margin-top: 10px;
 }
 .item-Name {
   color: var(--text-blue);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 14.5px;
+  font-weight: 500;
   margin-top: 5px;
 }
 .star {
@@ -139,8 +139,8 @@
   top: 10px;
   background-color: red;
   color: white;
-  border-radius: 5px;
-  padding: 2px 3px;
+  border-radius: 8px;
+  padding: 4px 3px;
   font-size: 10px;
   font-weight: 600;
   left: 10px;
@@ -173,7 +173,7 @@
     font-size: 17px;
     border: none;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: var(--primary-blue);
     color: white;
     display: flex;
@@ -183,7 +183,7 @@
     transition: 100ms;
   }
   button:hover {
-    background-color: #15308a;
+    opacity: 0.8;
   }
 }
 .item-count {
@@ -216,14 +216,14 @@
   font-weight: 500;
   align-items: center;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   overflow: hidden;
   transition: all 0.2s;
   cursor: pointer;
 }
 
 .cart-btn:hover {
-  background-color: #15308a;
+  opacity: 0.8;
 }
 
 @keyframes fly-1 {

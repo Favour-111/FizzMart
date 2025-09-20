@@ -33,7 +33,6 @@
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  background: url("https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
   img {
     width: 460px;
     position: absolute;
@@ -45,11 +44,9 @@
 }
 .Left1 {
   background-color: #f5f3e7;
-  background: url("https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
 }
 .Left2 {
   background-color: #d6ebee;
-  background: url("https://www.transparentpng.com/thumb/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
 }
 .banner-right {
   width: 40%;
@@ -63,7 +60,6 @@
   width: 100%;
   height: 265px;
   border-radius: 10px;
-  background: url("https://www.transparentpng.com/download/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
   background-color: #cde2ff;
   position: relative;
   img {
@@ -75,7 +71,6 @@
 .banner-right-item-bottom {
   padding: 20px 30px;
   display: flex;
-  background: url("https://www.transparentpng.com/download/pattern/p3NBVZ-data-security-and-privacy-software-services-safe-data.png");
   flex-direction: column;
   justify-content: center;
   width: 100%;
@@ -102,21 +97,21 @@
     background-color: red;
     padding: 1px 5px;
     border-radius: 4px;
-    font-weight: 700;
+    font-weight: 500;
   }
 }
 .banner-right-head {
-  font-size: 45px;
+  font-size: 47px;
   color: var(--text-blue);
   position: relative;
   z-index: 10000;
-  font-weight: 900;
+  font-weight: 700;
   width: 80%;
   line-height: 1.2;
   margin-top: 25px;
 }
 .banner-right-week {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
   margin-top: 15px;
   position: relative;
@@ -144,7 +139,7 @@
   border: none;
   display: flex;
   align-items: center;
-  font-weight: 700;
+  font-weight: 600;
   justify-content: center;
   gap: 10px;
   background-color: var(--primary-blue);
@@ -161,12 +156,11 @@
   width: 60%;
   line-height: 1.2;
   color: var(--text-blue);
-  font-weight: 700;
+  font-weight: 600;
 }
 .banner-top-content {
   margin-top: 10px;
   font-size: 16px;
-  font-weight: 700;
   color: #787878;
   font-weight: 500;
   span {
@@ -178,7 +172,7 @@
   background-color: var(--primary-blue);
   color: white;
   border: none;
-  font-weight: 700;
+  font-weight: 600;
   width: 100px;
   height: 40px;
   margin-top: 20px;
@@ -202,7 +196,7 @@
 .second-banner-head {
   font-size: 25px;
   color: var(--text-blue);
-  font-weight: 900;
+  font-weight: 700;
   margin-top: 30px;
 }
 .second-banner-content {
@@ -218,7 +212,6 @@
   border-radius: 10px;
   border: none;
   color: #fff;
-  font-weight: 200;
   font-size: 14px;
   margin-top: 20px;
   font-weight: 500;
