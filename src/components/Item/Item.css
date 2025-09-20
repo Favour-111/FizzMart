@@ -237,8 +237,11 @@
 }
 @media screen and (max-width: 500px) {
   .item-image {
+    height: 150px;
     img {
-      width: 120px !important;
+      width: 110px !important;
+      object-fit: cover;
+      height: 110px !important;
     }
   }
 }
