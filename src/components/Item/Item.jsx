@@ -67,7 +67,7 @@ const Item = ({ product, category }) => {
             {category === undefined ? product.category : category}
           </div>
           <div className="item-Name">{product.productName}</div>
-          <div className="variation mt-1">{product.Variation || ""}</div>
+          <div className="variation">{product.Variation || ""}</div>
           <div className="rating">
             <div>{renderStars()}</div>
             <div>({product.Rating})</div>

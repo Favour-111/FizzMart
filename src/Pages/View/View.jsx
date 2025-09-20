@@ -256,7 +256,7 @@ const View = () => {
           <div className="slash">
             <MdChevronRight />
           </div>
-          <span>{currentProduct?.category}</span>
+          <span>{ProductFind?.category}</span>
 
           <div className="slash">
             <MdChevronRight />
@@ -277,7 +277,7 @@ const View = () => {
 
               <div className="cont-1">
                 <div className="prod-abt-category">
-                  {currentProduct?.category} <MdChevronRight /> {page}
+                  {ProductFind?.category} <MdChevronRight /> {page}
                 </div>
                 <div className="prod-abt-name">{ProductFind?.productName}</div>
 

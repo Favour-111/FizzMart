@@ -23,9 +23,9 @@
   }
 }
 .second-banner-head2 {
-  font-size: 30px;
+  font-size: 35px;
   color: var(--text-blue);
-  font-weight: 900;
+  font-weight: 700;
 }
 .category-page-head {
   font-weight: 700;
@@ -67,8 +67,8 @@
 }
 .category-page-item-head {
   margin-top: 10px;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 19px;
   transition: 200ms;
   cursor: pointer;
 }
@@ -76,7 +76,7 @@
   color: #1e40af;
 }
 .category-page-item-Content {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: #787878;
   margin: 10px 0;
@@ -92,7 +92,7 @@
   border-radius: 5px;
   width: fit-content;
   padding: 0 10px;
-  font-size: 12px;
+  font-size: 13px;
   transition: 250ms;
   color: #787878;
   background-color: #f3f3f3;
