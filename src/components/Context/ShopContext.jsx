@@ -234,9 +234,10 @@ const ShopContextProvider = (props) => {
 
   // 🔹 add to cart
   const addToCart = async (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
 
     if (localStorage.getItem("auth-token")) {
+      // 🔹 Logged-in user → send to backend
       try {
         setCartLoader(itemId);
         const response = await fetch(`${process.env.REACT_APP_API}/addtocart`, {
@@ -248,8 +249,9 @@ const ShopContextProvider = (props) => {
           },
           body: JSON.stringify({ itemId }),
         });
-        if (response) {
-          toast.success("item successfully added to cart");
+
+        if (response.ok) {
+          toast.success("Item successfully added to cart");
         } else {
           toast.error("Network error");
         }
@@ -260,8 +262,15 @@ const ShopContextProvider = (props) => {
       } finally {
         setCartLoader(null);
       }
+    } else {
+      // 🔹 Guest user → only update local storage
+      const guestCart = JSON.parse(localStorage.getItem("guest-cart") || "{}");
+      guestCart[itemId] = (guestCart[itemId] || 0) + 1;
+      localStorage.setItem("guest-cart", JSON.stringify(guestCart));
+      toast.success("Item added to cart");
     }
   };
+
   const clearCart = async () => {
     setCartItems(getDefaultCart()); // reset local cart
 

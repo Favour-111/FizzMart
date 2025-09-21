@@ -99,7 +99,9 @@ const NavSm = () => {
                 <div>
                   <LiaOpencart className="logo-icon" />
                 </div>
-                <div className="logo-txt">FizzMart</div>
+                <div className="logo-txt">
+                  Fizz<span>Mart</span>{" "}
+                </div>
               </div>
               <IoCloseOutline onClick={() => setOpenNav(false)} size={28} />
             </div>
@@ -391,14 +393,16 @@ const NavSm = () => {
 
         {/* Bottom Navbar */}
         <div className="shopping-icons-sm" onClick={() => setOpenNav(true)}>
-          <RxHamburgerMenu size={23} />
+          <RxHamburgerMenu size={18} />
         </div>
         <div>
           <Link to="/" className="logo-sm">
             <div>
               <LiaOpencart className="logo-icon" />
             </div>
-            <div>FizzMart</div>
+            <div>
+              Fizz<span>Mart.</span>
+            </div>
           </Link>
         </div>
 
@@ -474,6 +478,7 @@ const NavSm = () => {
                   localStorage.removeItem("auth-token");
                   localStorage.removeItem("userId");
                   window.location.replace("/");
+                  toast.success("you have been logged out");
                 }}
               >
                 <div>

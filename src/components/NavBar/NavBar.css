@@ -35,13 +35,10 @@
   text-decoration: none;
   font-size: 30px;
   font-weight: 600;
-
-  /* Gradient text */
-  background: linear-gradient(90deg, #1e293b, #1e40af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent; /* fallback */
+  color: #4b5966;
+  span {
+    color: var(--primary-blue);
+  }
 }
 
 .location-cont {

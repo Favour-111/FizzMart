@@ -14,7 +14,7 @@
 .New-ProductHead {
   font-size: 24px;
   font-weight: 500 !important;
-  color: var(--text-blue);
+  color: #333c45;
 }
 .new-prod-top {
   width: 30%;
@@ -24,7 +24,7 @@
 }
 .New-ProductContent {
   font-weight: 400 !important;
-  color: #787878;
+  color: var(--text-normal);
   font-size: 14px !important;
 }
 .newproduct {

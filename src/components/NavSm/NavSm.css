@@ -3,6 +3,7 @@
   --accent-blue: #0ea5e9;
   --background-blue: #eff6ff;
   --text-blue: #1e293b;
+  --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
 
@@ -59,15 +60,12 @@
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
 
-  /* Gradient text */
-  background: linear-gradient(90deg, #1e293b, #1e40af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent; /* fallback */
+  span {
+    color: var(--primary-blue);
+  }
 }
 .nav-bar-input-sm {
   border: 1px solid #efefef;
@@ -185,7 +183,7 @@
     padding: 0 5px;
   }
   .nav-sm-list-item {
-    color: var(--text-blue);
+    color: var(--text-normal);
     text-decoration: none;
     font-size: 13.5px;
     font-weight: 500;

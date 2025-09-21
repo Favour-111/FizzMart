@@ -4,13 +4,15 @@
   --background-blue: #eff6ff;
   --text-blue: #1e293b;
   --hover-blue: #3b82f6;
+  --text-normal: #4b5966;
 }
+
 .CategoryContainer {
   padding: 20px 0;
   margin-top: 40px;
 }
 .header-sub-head {
-  color: var(--primary-blue);
+  color: #333c45;
   font-size: 11px;
   letter-spacing: 2px;
   font-weight: 400;
@@ -55,6 +57,7 @@
   margin-top: 15px;
   font-weight: 400;
   font-size: 14px;
+  color: var(--text-normal);
 }
 .category-item:hover {
   transform: translateY(-1px);

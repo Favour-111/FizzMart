@@ -113,7 +113,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-card-details">
-          <div className="texts">Payent Methods</div>
+          <div className="texts">Payment Methods</div>
           <div className="d-flex align-items-center gap-2">
             <div>
               <img

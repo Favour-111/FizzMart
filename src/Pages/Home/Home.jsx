@@ -97,9 +97,7 @@ const Home = () => {
 
           <div className="banner-right">
             <div className="banner-right-item-top">
-              <div className="banner-right-head">
-                10% cashback on First Order
-              </div>
+              <div className="banner-top-head">10% cashback on First Order</div>
               <div className="banner-top-content">
                 Refresh your day the
                 <br /> with Fresh Seasoning
@@ -116,7 +114,7 @@ const Home = () => {
               />
             </div>
             <div className="banner-right-item-bottom">
-              <div className="banner-right-head">Say yes to season’s fresh</div>
+              <div className="banner-top-head">Say yes to season’s fresh</div>
               <div className="banner-top-content">
                 Refresh your day the
                 <br /> with Fresh Seasoning

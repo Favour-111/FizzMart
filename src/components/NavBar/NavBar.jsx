@@ -75,7 +75,9 @@ const NavBar = () => {
             <div>
               <LiaOpencart className="logo-icon" />
             </div>
-            <div>FizzMart</div>
+            <div>
+              Fizz<span>Mart.</span>
+            </div>
           </div>
           <div className="d-flex align-items-center gap-3">
             <div className="nav-search-container">
@@ -189,6 +191,7 @@ const NavBar = () => {
                       localStorage.removeItem("auth-token");
                       localStorage.removeItem("userId");
                       window.location.replace("/");
+                      toast.success("you have been logged out");
                     }}
                   >
                     <div>
