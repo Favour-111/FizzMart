@@ -133,7 +133,7 @@ const SignUp = () => {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`mt-3 ${errors.password ? "error-input" : ""}`}
+                className={`mt-1 ${errors.password ? "error-input" : ""}`}
               />
               {errors.password && (
                 <p className="error-text">{errors.password}</p>

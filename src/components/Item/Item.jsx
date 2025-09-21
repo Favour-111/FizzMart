@@ -95,7 +95,10 @@ const Item = ({ product, category }) => {
             )}
             {cartItems[product.id] > 0 ? (
               <div className="item-counter">
-                <button onClick={() => RemoveCart(product.id)}>
+                <button
+                  disabled={cartLoader}
+                  onClick={() => RemoveCart(product.id)}
+                >
                   <FiMinus />
                 </button>
 
@@ -110,7 +113,10 @@ const Item = ({ product, category }) => {
                   <div className="item-count">{cartItems[product.id]}</div>
                 )}
 
-                <button onClick={() => addToCart(product.id)}>
+                <button
+                  disabled={cartLoader}
+                  onClick={() => addToCart(product.id)}
+                >
                   <IoAdd />
                 </button>
               </div>
@@ -123,6 +129,7 @@ const Item = ({ product, category }) => {
               </button>
             ) : (
               <button
+                disabled={cartLoader}
                 onClick={() => {
                   addToCart(product.id);
                 }}
@@ -144,6 +151,7 @@ const Item = ({ product, category }) => {
                 </div>
               ) : (
                 <div
+                  disabled={cartLoader}
                   className="button-1 shadow-sm"
                   onClick={() => {
                     addToCart(product.id);

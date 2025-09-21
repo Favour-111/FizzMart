@@ -71,7 +71,9 @@ const SignIn = () => {
           <div>
             <LiaOpencart className="logo-icon" />
           </div>
-          <div>FizzMart</div>
+          <div className="logo-txt">
+            Fizz<span>Mart</span>
+          </div>
         </Link>
         <div className="account-switch">
           Don't have an account?{" "}

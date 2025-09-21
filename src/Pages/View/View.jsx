@@ -31,6 +31,7 @@ const View = () => {
     addToList,
     WishList,
     removeList,
+    cartLoader,
     ProdLoader,
   } = useContext(ShopContext);
   const { id } = useParams();
@@ -329,6 +330,7 @@ const View = () => {
                       cartItems[ProductFind?.id] > 0 ? (
                         <div className="abt-counter-body">
                           <button
+                            disabled={cartLoader}
                             onClick={() => {
                               addToCart(ProductFind?.id);
                             }}
@@ -337,14 +339,25 @@ const View = () => {
                             <GoPlus />
                           </button>
                           <div className="about-counter">
-                            {cartItems[ProductFind?.id]}
+                            {cartLoader === ProductFind?.id ? (
+                              <div
+                                className="spinner-border spinner-border-sm"
+                                role="status"
+                              >
+                                <span className="visually-hidden">
+                                  Loading...
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="item-count">
+                                {cartItems[ProductFind?.id]}
+                              </div>
+                            )}
                           </div>
                           <button
+                            disabled={cartLoader}
                             onClick={() => {
                               RemoveCart(ProductFind?.id);
-                              toast.success(
-                                `${ProductFind?.productName} removed`
-                              );
                             }}
                             className="abt-button-2"
                           >
@@ -354,13 +367,14 @@ const View = () => {
                       ) : (
                         <button
                           className="abt-add-cart"
+                          disabled={cartLoader}
                           onClick={() => {
-                            toast.success(
-                              `${ProductFind?.productName} added to cart`
-                            );
+                            addToCart(ProductFind?.id);
                           }}
                         >
-                          Add to Cart
+                          {cartLoader === ProductFind?.id
+                            ? "Adding..."
+                            : "Add to cart"}
                         </button>
                       )
                     ) : (

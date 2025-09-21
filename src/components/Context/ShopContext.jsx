@@ -291,14 +291,30 @@ const ShopContextProvider = (props) => {
 
   const getTotalValue = () => {
     let totalAmount = 0;
+
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let totalValue = product.find((product) => product.id === Number(item));
-        totalAmount += totalValue?.newPrice * cartItems[item];
+        // match itemId (number/string) with product.id (not _id)
+        const productData = product.find(
+          (p) => String(p.id) === String(item) // compare properly
+        );
+
+        if (productData) {
+          totalAmount += (productData.newPrice || 0) * cartItems[item];
+        } else {
+          // If product no longer exists, clean it up from cart
+          setCartItems((prev) => {
+            const updated = { ...prev };
+            delete updated[item]; // remove ghost product
+            return updated;
+          });
+        }
       }
     }
+
     return totalAmount;
   };
+
   // 🔹 remove one quantity from cart
   const RemoveCart = async (itemId) => {
     setCartItems((prev) => ({
