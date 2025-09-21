@@ -45,6 +45,7 @@
     border-radius: 3px;
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     align-items: center;
     justify-content: center;
   }
@@ -99,6 +100,7 @@
   .contact-info {
     padding: 10px !important;
     margin-top: 30px;
+    gap: 0 !important;
   }
   .contact-info-itm {
     width: 100% !important;

@@ -28,7 +28,7 @@ const Contact = () => {
               alt="mail--v1"
             />
             <div className="contact-info-head">Mail & website</div>
-            <div className="d-flex align-items-center gap-1 contact-content-item">
+            <div className="d-flex align-items-center justify-content-center gap-1 contact-content-item">
               <div>
                 <img
                   width="15"
@@ -39,7 +39,7 @@ const Contact = () => {
               </div>
               <div>peterminelove@gmail.com</div>
             </div>
-            <div className="d-flex align-items-center gap-1 contact-content-item">
+            <div className="d-flex justify-content-center align-items-center gap-1 contact-content-item">
               <div>
                 <img
                   width="15"
@@ -60,7 +60,7 @@ const Contact = () => {
             />
             <div className="contact-info-head mt-2">Contact Information</div>
 
-            <div className="d-flex align-items-center gap-1 contact-content-item">
+            <div className="d-flex justify-content-center align-items-center gap-1 contact-content-item">
               <div>
                 <img
                   width="15"
@@ -80,7 +80,7 @@ const Contact = () => {
               alt="marker"
             />
             <div className="contact-info-head mt-2">Address</div>
-            <div className="d-flex gap-1 contact-content-item">
+            <div className="d-flex justify-content-center gap-1 contact-content-item">
               <div>
                 <img
                   width="15"
