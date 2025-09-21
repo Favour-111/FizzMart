@@ -8,3 +8,10 @@
     width: 400px;
   }
 }
+@media screen and (max-width: 500px) {
+  .no-prod-cont {
+    img {
+      width: 340px;
+    }
+  }
+}

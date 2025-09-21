@@ -5,10 +5,12 @@ import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
 const SignIn = () => {
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
+  const [show, setShow] = useState(true);
   const [formData, setFormData] = useState({
     password: "",
     email: "",
@@ -104,7 +106,7 @@ const SignIn = () => {
             <div className="form-group">
               <input
                 name="password"
-                type="password"
+                type={show ? "password" : "text"}
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
@@ -112,6 +114,11 @@ const SignIn = () => {
               />
               {errors.password && (
                 <p className="error-text">{errors.password}</p>
+              )}
+              {show ? (
+                <FiEye className="eye" onClick={() => setShow(false)} />
+              ) : (
+                <FiEyeOff className="eye" onClick={() => setShow(true)} />
               )}
             </div>
             <div className="d-flex align-items-center justify-content-between mt-2 w-100 ">

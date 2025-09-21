@@ -370,7 +370,9 @@ const NavSm = () => {
                 </div>
 
                 <li>
-                  <Link className="nav-sm-list-item">About</Link>
+                  <Link to="/About-page" className="nav-sm-list-item">
+                    About
+                  </Link>
                 </li>
                 <li>
                   <Link className="nav-sm-list-item" to="/contact-us">

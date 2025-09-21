@@ -3,10 +3,12 @@ import "./SignUp.css";
 import { LiaOpencart } from "react-icons/lia";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 const SignUp = () => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(true);
   const [formData, setFormData] = useState({
     password: "",
     FullName: "",
@@ -124,19 +126,25 @@ const SignUp = () => {
                 {errors.email && <p className="error-text">{errors.email}</p>}
               </div>
             </div>
-            <div className="form-group ">
+            <div className="form-group">
               <input
                 name="password"
-                type="password"
+                type={show ? "password" : "text"}
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className={` ${errors.password ? "error-input" : ""}`}
+                className={`mt-3 ${errors.password ? "error-input" : ""}`}
               />
               {errors.password && (
                 <p className="error-text">{errors.password}</p>
               )}
+              {show ? (
+                <FiEye className="eye" onClick={() => setShow(false)} />
+              ) : (
+                <FiEyeOff className="eye" onClick={() => setShow(true)} />
+              )}
             </div>
+
             <div className="form-group ">
               <input
                 name="phoneNumber"

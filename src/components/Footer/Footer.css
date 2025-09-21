@@ -16,8 +16,8 @@
   display: flex;
   flex-wrap: wrap;
   .footer-item-header {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 14.5px;
+    font-weight: 600;
     color: var(--text-blue);
   }
 }
@@ -35,8 +35,8 @@
     list-style: none;
   }
   .footer-link {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 14.5px;
+    font-weight: 400;
     text-decoration: none;
     color: #787878;
   }

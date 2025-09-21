@@ -59,6 +59,7 @@ const About = () => {
               <img
                 src="https://media.istockphoto.com/id/1221101939/photo/delivery-concept-asian-man-hand-accepting-a-delivery-boxes-from-professional-deliveryman-at.jpg?s=612x612&w=0&k=20&c=jvZ_phbXmzOrCCZiGn8ZQO99a5skBJlclbujI5jGam8="
                 alt=""
+                loading="lazy"
               />
             </div>
           </div>

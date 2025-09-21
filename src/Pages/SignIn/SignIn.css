@@ -56,6 +56,7 @@
 }
 
 .form-group {
+  position: relative;
   margin-bottom: 10px;
 }
 
@@ -64,7 +65,13 @@ label {
   font-weight: 600;
   margin-bottom: 5px;
 }
-
+.eye {
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  top: 30px;
+  cursor: pointer;
+}
 input {
   width: 100%;
   padding: 10px;

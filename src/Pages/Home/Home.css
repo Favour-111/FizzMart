@@ -162,7 +162,7 @@
   margin-top: 10px;
   font-size: 16px;
   color: #787878;
-  font-weight: 500;
+  font-weight: 400;
   span {
     font-size: 20px;
     color: #1e40af;
@@ -172,8 +172,8 @@
   background-color: var(--primary-blue);
   color: white;
   border: none;
-  font-weight: 600;
-  width: 100px;
+  font-weight: 400;
+  width: 110px;
   height: 40px;
   margin-top: 20px;
   font-size: 13px;
@@ -203,7 +203,7 @@
   width: 400px;
   color: #787878;
   margin-top: 5px;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
 }
 .fancy-button {
@@ -312,6 +312,7 @@
   .banner-right {
     width: 100% !important;
     display: flex;
+    overflow: hidden;
     flex-direction: column !important;
     align-items: center;
     img {
@@ -355,6 +356,7 @@
   }
   .banner-right-button {
     height: 35px;
+    margin-top: 15px;
     width: 160px;
     font-size: 11px;
   }
@@ -368,19 +370,20 @@
   }
   .banner-top-button {
     height: 37px;
-    width: 85px;
-    font-size: 12px;
+    width: 90px;
+    font-size: 12.5px;
   }
   .banner-top-head {
     font-size: 23px;
   }
   .banner-top-content {
-    font-size: 14px;
+    font-size: 16px;
   }
   .banner-right-item-top {
     img {
       width: 200px;
       bottom: 0;
+      right: -30px;
     }
   }
   .banner-right-item-bottom {
@@ -390,10 +393,12 @@
     }
   }
   .banner-right-week {
-    font-size: 14px;
+    font-size: 15px !important;
+    font-weight: 400;
   }
   .banner-right-price {
     font-size: 12px;
+    margin-top: 10px;
     span {
       font-size: 15px;
     }
@@ -452,8 +457,10 @@
 }
 @media screen and (max-width: 600px) {
   .banner-right-head {
-    font-size: 24px;
+    font-size: 28px;
     width: 90%;
+    font-weight: 600;
+    margin-top: 10px;
   }
   .banner-left {
     padding: 30px;
@@ -469,14 +476,14 @@
   }
   .second-banner-head {
     margin-top: 0;
-    font-size: 20px;
+    font-size: 23px;
   }
   .second-banner-content {
     width: 100%;
-    font-size: 14px;
+    font-size: 15px;
   }
   .fancy-button {
-    font-size: 12px;
+    font-size: 12.5px;
     padding: 10px 20px;
   }
   .banners-container {
