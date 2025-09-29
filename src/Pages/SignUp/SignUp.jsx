@@ -80,7 +80,7 @@ const SignUp = () => {
           <div>
             <LiaOpencart className="logo-icon" />
           </div>
-          <div>FizzMart</div>
+          <div>H&P Marketplace</div>
         </Link>
         <div className="account-switch">
           Already have an account?{" "}

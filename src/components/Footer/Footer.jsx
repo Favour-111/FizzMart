@@ -147,8 +147,8 @@ const Footer = () => {
         </div>
         <div className="footer-social-container">
           <div className="copyright">
-            © 2022 - 2025 FizzMart eCommerce Template. All rights reserved.
-            Powered by
+            © 2022 - 2025 H&P Marketplace eCommerce Template. All rights
+            reserved. Powered by
             <br />
             <Link className="portfolio-link">Horbah's tech</Link>
           </div>

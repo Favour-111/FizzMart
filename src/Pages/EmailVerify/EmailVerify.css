@@ -15,7 +15,7 @@
   flex-direction: column;
 }
 .verified-head {
-  font-size: 30px;
+  font-size: 25px;
   color: #787878;
 }
 .verified-content {
@@ -23,6 +23,8 @@
   color: #393939;
   margin: 20px 0;
   width: 400px;
+  text-align: center;
+  padding: 10px !important;
 }
 .verfied-img {
   img {
@@ -49,7 +51,6 @@
   border-radius: 5px;
   color: white;
   width: 200px;
-  font-family: poppinsRegular;
   border: none;
   font-size: 13px;
   text-transform: capitalize;

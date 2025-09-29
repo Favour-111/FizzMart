@@ -22,6 +22,9 @@ import { AiFillDislike, AiFillLike } from "react-icons/ai";
 import axios from "axios";
 import SingleProdLoader from "../../components/SingleProdLoader/SingleProdLoader";
 import ProdSkeleton from "../../components/Skelenton/ProdSkelenton";
+import FroalaEditor from "react-froala-wysiwyg";
+import "froala-editor/css/froala_style.min.css"; // Ensure Froala's styles are imported
+import "froala-editor/css/froala_editor.pkgd.min.css";
 const View = () => {
   const {
     addToCart,
@@ -37,6 +40,42 @@ const View = () => {
   const { id } = useParams();
 
   const ProductFind = product.find((item) => item?._id === id) || null;
+  console.log(ProductFind.id);
+
+  useEffect(() => {
+    const updateRecentlyViewed = async () => {
+      const userId = localStorage.getItem("userId");
+      const itemId = ProductFind.id;
+      if (!userId) {
+        console.log("User is not logged in");
+        return; // Ensure user is logged in before sending request
+      }
+
+      if (ProductFind) {
+        try {
+          await fetch(
+            `${process.env.REACT_APP_API}/recently-viewed/${userId}`,
+            {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "auth-token": localStorage.getItem("auth-token"),
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ productId: itemId }),
+            }
+          );
+          console.log("Successfully updated recently viewed products.");
+        } catch (error) {
+          console.error("Error updating recently viewed products:", error);
+        }
+      } else {
+        console.log("Product not found in the list.");
+      }
+    };
+
+    updateRecentlyViewed();
+  }, [id]);
 
   const [user, setUser] = useState([]);
 
@@ -244,6 +283,26 @@ const View = () => {
       return new Date(a.createdAt) - new Date(b.createdAt); // oldest first
     }
   });
+  //froala config
+  const config = {
+    placeholderText: "Enter your comment here...",
+    toolbarButtons: [
+      "bold",
+      "italic",
+      "underline",
+      "|",
+      "align",
+      "formatOL",
+      "formatUL",
+      "|",
+      "insertLink",
+      "insertImage",
+      "|",
+      "undo",
+      "redo",
+    ], // Customize toolbar buttons
+    charCounterCount: true, // Enable character counter
+  };
 
   return (
     <div>

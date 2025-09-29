@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@botpress/webchat": "^3.2.9",
     "@paystack/inline-js": "^2.22.7",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.4",
@@ -10,8 +11,10 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.11.0",
     "date-fns": "^4.1.0",
+    "froala-editor": "^4.6.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-froala-wysiwyg": "^4.6.2",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-quill": "^2.0.0",

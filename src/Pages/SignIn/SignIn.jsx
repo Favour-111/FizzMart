@@ -91,7 +91,7 @@ const SignIn = () => {
           <form onSubmit={handleSubmit} className="form-container">
             <div className="form-head">Sign In</div>
             <div className="form-Content">
-              Welcome back FizzMart Enter your credentials to continue
+              Welcome back H&P Marketplace Enter your credentials to continue
             </div>
             <div className="form-group">
               <input

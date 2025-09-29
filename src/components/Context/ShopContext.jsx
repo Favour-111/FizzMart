@@ -39,6 +39,7 @@ const ShopContextProvider = (props) => {
   const [categoryLoader, setCategoryLoader] = useState(false);
   const [loading, setLoading] = useState(false);
   const [managers, setManagers] = useState([]);
+  const [viewed, setViewed] = useState(false);
   const userId = localStorage.getItem("userId");
   const fetchNotification = async () => {
     if (userId) {
@@ -232,7 +233,6 @@ const ShopContextProvider = (props) => {
     Managers();
   }, []);
 
-  // 🔹 add to cart
   const addToCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: (prev[itemId] || 0) + 1 }));
 
@@ -240,6 +240,8 @@ const ShopContextProvider = (props) => {
       // 🔹 Logged-in user → send to backend
       try {
         setCartLoader(itemId);
+
+        // Step 1: Add item to cart
         const response = await fetch(`${process.env.REACT_APP_API}/addtocart`, {
           method: "POST",
           headers: {
@@ -256,6 +258,17 @@ const ShopContextProvider = (props) => {
           toast.error("Network error");
         }
 
+        // Step 2: Update recently viewed products
+        await fetch(`${process.env.REACT_APP_API}/recently-viewed/${userId}`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "auth-token": localStorage.getItem("auth-token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ productId: itemId }), // Send only the product ID
+        });
+
         await fetchCartData();
       } catch (error) {
         console.error(error.message);
@@ -267,6 +280,19 @@ const ShopContextProvider = (props) => {
       const guestCart = JSON.parse(localStorage.getItem("guest-cart") || "{}");
       guestCart[itemId] = (guestCart[itemId] || 0) + 1;
       localStorage.setItem("guest-cart", JSON.stringify(guestCart));
+
+      // Update recently viewed in localStorage for guest
+      const guestRecentlyViewed = JSON.parse(
+        localStorage.getItem("guest-recently-viewed") || "[]"
+      );
+      if (!guestRecentlyViewed.includes(itemId)) {
+        guestRecentlyViewed.unshift(itemId); // Add product to the top of the array
+        localStorage.setItem(
+          "guest-recently-viewed",
+          JSON.stringify(guestRecentlyViewed)
+        );
+      }
+
       toast.success("Item added to cart");
     }
   };
@@ -389,7 +415,6 @@ const ShopContextProvider = (props) => {
           },
           body: JSON.stringify({ itemId }),
         });
-
         await fetchWishlistData();
       } catch (error) {
         toast.error("Network error");
@@ -464,6 +489,8 @@ const ShopContextProvider = (props) => {
     loading,
     notificationLoader,
     fetchNotification,
+
+    viewed,
   };
 
   return (

@@ -19,6 +19,7 @@ import BackToTop from "../../components/BackToTop/BackToTop";
 import chicken from "../../assets/images/43-430088_chicken-png-free-commercial-use-images-chicken-meat.png";
 import PopUP from "../../components/PopUp/PopUP";
 import { useNavigate } from "react-router";
+import Recent from "../../components/Recent/Recent";
 var settings = {
   dots: false,
   infinite: true,
@@ -57,6 +58,7 @@ const Home = () => {
       <NavBar />
       <NavSm />
       <PopUP />
+      {/* <ChatBot /> */}
       <div className="home-container">
         <div className="banners-container">
           <div className="first-banner ">
@@ -135,6 +137,9 @@ const Home = () => {
         <CategoryContainer />
         <div>
           <NewProduct />
+        </div>
+        <div>
+          <Recent />
         </div>
         <div className="second-banner">
           <div>
