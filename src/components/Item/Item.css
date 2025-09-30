@@ -17,6 +17,12 @@
   height: fit-content;
   min-height: fit-content;
 }
+.item-body img {
+  transition: 250ms;
+}
+.item-body:hover img {
+  transform: scale(1.1);
+}
 .item-border {
   padding: 10px;
   border: 1px solid #ededed;
@@ -67,6 +73,7 @@
   color: white;
   background-color: var(--primary-blue);
 }
+
 .item-image {
   display: flex;
   align-items: center;

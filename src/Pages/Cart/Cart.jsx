@@ -106,20 +106,34 @@ const Cart = () => {
                               <div className="cart-weight">
                                 {cartItems[item.id]} kg
                               </div>
-                              <div
-                                className="remove-section"
-                                onClick={() => {
-                                  removeFromCart(item.id);
-                                  toast.success(
-                                    `${item.productName} has been removed from cart`
-                                  );
-                                }}
-                              >
-                                <div className="cart-remove-icon ">
-                                  <FaRegTrashAlt size={14} />
+                              {cartLoader ? (
+                                <div
+                                  className="remove-section"
+                                  onClick={() => {
+                                    toast.success(`please wait.....`);
+                                  }}
+                                >
+                                  <div className="cart-remove-icon ">
+                                    <FaRegTrashAlt size={14} />
+                                  </div>
+                                  <div className="text">Remove</div>
                                 </div>
-                                <div className="text">Remove</div>
-                              </div>
+                              ) : (
+                                <div
+                                  className="remove-section"
+                                  onClick={() => {
+                                    removeFromCart(item.id);
+                                    toast.success(
+                                      `${item.productName} has been removed from cart`
+                                    );
+                                  }}
+                                >
+                                  <div className="cart-remove-icon ">
+                                    <FaRegTrashAlt size={14} />
+                                  </div>
+                                  <div className="text">Remove</div>
+                                </div>
+                              )}
                             </div>
                           </div>
                           {cartLoader === product.id ? (

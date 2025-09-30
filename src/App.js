@@ -30,11 +30,13 @@ import Reset from "./Pages/Reset/Reset";
 import { useContext } from "react";
 import { ShopContext } from "./components/Context/ShopContext";
 import FAQ from "./Pages/FAQ/FAQ";
+import Chatbot from "./components/ChatBot/ChatBot";
 function App() {
   const { categories, notifications, categoryLoader } = useContext(ShopContext);
   return (
     <>
       <ScrollToTop />
+      <Chatbot />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Contact />} path="/contact-us" />

@@ -20,6 +20,7 @@ import chicken from "../../assets/images/43-430088_chicken-png-free-commercial-u
 import PopUP from "../../components/PopUp/PopUP";
 import { useNavigate } from "react-router";
 import Recent from "../../components/Recent/Recent";
+import Recommended from "../../components/Recommended/Recommended";
 var settings = {
   dots: false,
   infinite: true,
@@ -162,6 +163,9 @@ const Home = () => {
               alt=""
             />
           </div>
+        </div>
+        <div>
+          <Recommended />
         </div>
         <div>
           <Special />
