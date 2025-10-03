@@ -6,6 +6,22 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .subscribe-body {
   background-color: var(--text-blue);
   height: 440px;
@@ -31,12 +47,14 @@
   .over-lay-sub-head {
     color: white;
     font-size: 13px;
-    font-weight: 600;
+
+    font-family: poppinsRegular;
   }
   .overlay-head {
     font-size: 25px;
     color: white;
-    font-weight: 800;
+
+    font-family: poppinsSemiBold;
     margin-top: 20px;
     width: 80%;
   }
@@ -72,7 +90,7 @@
     color: white;
     border: none;
     font-size: 13px;
-    font-weight: 600;
+    font-family: poppinsRegular;
   }
 }
 @media screen and (max-width: 680px) {

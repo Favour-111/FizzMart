@@ -6,6 +6,22 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .single-order-body {
   display: flex;
   gap: 20px;
@@ -21,6 +37,7 @@
 .single-item {
   margin-top: 15px;
   button {
+    font-family: poppinsRegular;
     font-size: 12px;
   }
 }
@@ -44,11 +61,13 @@
 }
 .confirmation-head {
   font-weight: 800;
+  font-family: poppinsSemiBold;
   text-align: center;
 }
 .confirmation-Subhead {
   font-weight: 400;
   font-size: 13px;
+  font-family: poppinsLight;
   color: #787878;
   text-align: center;
 }
@@ -63,7 +82,7 @@
 .warning-text {
   display: flex;
   align-items: center;
-  font-weight: bold;
+  font-family: poppinsSemiBold;
   font-size: 14px;
   color: #771505;
 }
@@ -74,7 +93,7 @@
   justify-content: space-between;
   .close {
     color: white;
-    font-weight: 500;
+    font-family: poppinsRegular;
     background-color: #771505;
     border: none;
     font-size: 13px;
@@ -87,6 +106,7 @@
     border: 1px solid #771505;
     padding: 5px 10px;
     font-size: 13px;
+    font-family: poppinsRegular;
     background-color: transparent;
     border-radius: 3px;
     transition: 200ms;
@@ -103,7 +123,7 @@
   background-color: var(--text-blue);
   color: white;
   font-size: 11px;
-  font-weight: 400;
+  font-family: poppinsLight;
   border: none;
   padding: 7px 10px;
   transition: 200ms;
@@ -121,7 +141,7 @@
 }
 .single-order-head {
   color: var(--text-blue);
-  font-weight: 600;
+  font-family: poppinsRegular;
   font-size: 14px;
 }
 .single-image {
@@ -131,7 +151,7 @@
 }
 .single-order-content-text {
   color: #787878;
-  font-weight: 500;
+  font-family: poppinsRegular;
   font-size: 13.5px;
   margin-top: 3px;
 }
@@ -155,6 +175,7 @@
     top: 10px;
     right: 10px;
     font-size: 12px;
+    font-family: poppinsRegular;
     transition: 200ms;
     box-shadow: 0px -1px 8px 0px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: 0px -1px 8px 0px rgba(0, 0, 0, 0.25);
@@ -163,27 +184,28 @@
 }
 .single-item-btn {
   button {
+    font-family: poppinsRegular;
     font-size: 12px;
   }
 }
 .single-prod-name {
   color: var(--text-normal);
   font-size: 14px;
-  font-weight: 500;
+  font-family: poppinsRegular;
 }
 .single-Variation {
   color: var(--text-normal);
   font-size: 14px;
-  font-weight: 500;
+  font-family: poppinsRegular;
 }
 .single-quantity {
   color: #4b5966;
   font-size: 14px;
   text-transform: uppercase;
-  font-weight: 400;
+  font-family: poppinsRegular;
 }
 .single-price {
-  font-weight: 600;
+  font-family: poppinsRegular;
   font-size: 13px;
   color: var(--text-blue);
 }

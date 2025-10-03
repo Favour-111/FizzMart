@@ -6,15 +6,33 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
-
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .NewProduct-container {
   margin-top: 80px;
 }
 
 .New-ProductHead {
+  font-family: poppinsSemiBold;
   font-size: 24px;
-  font-weight: 500 !important;
-  color: #333c45;
+  color: var(--text-normal) !important;
+  span {
+    color: var(--primary-blue);
+  }
 }
 .new-prod-top {
   width: 30%;
@@ -23,9 +41,9 @@
   width: 100%;
 }
 .New-ProductContent {
-  font-weight: 400 !important;
-  color: var(--text-normal);
-  font-size: 14px !important;
+  font-family: poppinsLight;
+  color: #787878;
+  font-size: 12px !important;
 }
 .newproduct {
   display: flex;
@@ -56,9 +74,10 @@
 }
 .filter-buttons {
   background-color: transparent;
-  font-size: 13px;
+  font-size: 12px !important;
   color: #787878;
-  font-weight: 600;
+  font-family: poppinsLight;
+  font-weight: 500;
   cursor: pointer;
   transform: 350ms;
   padding: 13px 20px;
@@ -77,6 +96,7 @@
   text-align: center;
   color: #787878;
   font-weight: 500;
+  font-family: poppinsRegular;
   font-size: 15px;
 }
 @media screen and (max-width: 760px) {

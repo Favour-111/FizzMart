@@ -6,6 +6,22 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .nav-form {
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.05);
@@ -18,7 +34,7 @@
   -moz-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.05);
 }
 .account-switch {
-  font-weight: 500;
+  font-family: poppinsRegular;
   font-size: 13px;
   span {
     color: var(--primary-blue);
@@ -34,14 +50,14 @@
   justify-content: center;
 }
 .form-head {
-  font-size: 30px;
+  font-size: 25px;
   letter-spacing: 1px;
-  font-weight: 500;
+  font-family: poppinsRegular;
 }
 .form-Content {
   font-size: 14px;
   width: 90%;
-  font-weight: 400;
+  font-family: poppinsLight;
   margin: 15px 0 20px 0;
   color: var(--text-normal);
   /* text-align: center; */
@@ -62,18 +78,19 @@
 
 label {
   display: block;
-  font-weight: 600;
+  font-family: poppinsRegular;
   margin-bottom: 5px;
 }
 .eye {
   position: absolute;
   right: 10px;
   width: 30px;
-  top: 15px;
+  top: 30px;
   cursor: pointer;
 }
 input {
   width: 100%;
+  position: relative;
   padding: 10px;
   border: 1px solid #d5d5d5;
   border-radius: 4px;
@@ -89,7 +106,7 @@ input {
 .Forgot-password {
   color: var(--hover-blue);
   font-size: 13px;
-  font-weight: 600;
+  font-family: poppinsRegular;
 }
 .submit {
   margin-top: 20px;
@@ -100,10 +117,11 @@ input {
   padding: 9px 14px;
   border: none;
   border-radius: 4px;
+  font-family: poppinsRegular;
   cursor: pointer;
 }
 ::placeholder {
-  font-weight: 400;
+  font-family: poppinsLight;
 }
 .error-input {
   border: 1px solid red;
@@ -118,7 +136,7 @@ input {
   margin-top: 20px;
   color: var(--text-normal);
   font-size: 13px;
-  font-weight: 500;
+  font-family: poppinsRegular;
   text-align: center;
 
   span {

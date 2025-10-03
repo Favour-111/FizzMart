@@ -6,7 +6,22 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
-
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .contact-container {
   padding: 20px;
   display: flex;
@@ -16,9 +31,9 @@
   margin-top: 60px;
   text-align: center;
   .Contact-header {
-    font-weight: 700;
+    font-family: poppinsRegular;
     color: #4b5966;
-    font-size: 25px;
+    font-size: 23px;
     text-transform: capitalize;
     span {
       color: var(--primary-blue);
@@ -26,8 +41,9 @@
   }
   .contact-content {
     width: 370px;
-    color: var(--text);
-    font-size: 13px;
+    color: var(--text-normal);
+    font-size: 12px;
+    font-family: poppinsRegular;
   }
   .contact-info {
     display: flex;
@@ -52,12 +68,13 @@
   .contact-info-head {
     font-size: 20px;
     color: var(--text);
-    font-weight: 600;
+    font-family: poppinsRegular;
     text-transform: capitalize;
   }
   .contact-content-item {
     color: #4b5966;
-    font-size: 14px;
+    font-size: 13px;
+    font-family: poppinsRegular;
     margin-top: 10px;
   }
 }
@@ -86,8 +103,8 @@
     background-color: var(--primary-blue);
     color: white;
     padding: 10px 15px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-family: poppinsRegular;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
@@ -99,7 +116,7 @@
   }
   .contact-info {
     padding: 10px !important;
-    margin-top: 30px;
+    margin-top: 10px;
     gap: 0 !important;
   }
   .contact-info-itm {

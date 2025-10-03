@@ -14,11 +14,10 @@ const Special = () => {
           <div className="new-prod-top2">
             <div className="header-sub-head">Products</div>
             <div className="New-ProductHead">
-              Special Offers of the View All Week!
+              Special <span>Offers</span>
             </div>
             <div className="New-ProductContent">
-              Get exclusive ongoing offers, deals, and discount codes of
-              shopping
+              Get exclusive ongoing offers, deals, and discount
             </div>
           </div>
         </div>

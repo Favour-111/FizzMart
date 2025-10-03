@@ -25,7 +25,7 @@ const CategoryContainer = () => {
                 }}
                 className="category"
               >
-                <div className="category-item ">
+                <div className="category-item shadow-sm">
                   <div>
                     <img loading="lazy" src={item.image} alt="" />
                   </div>

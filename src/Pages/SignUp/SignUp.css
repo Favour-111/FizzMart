@@ -10,7 +10,13 @@
     width: 350px;
   }
 }
-
+.eye2 {
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  top: 17px;
+  cursor: pointer;
+}
 @media screen and (max-width: 950px) {
   .sing-in-container {
     height: 65vh;

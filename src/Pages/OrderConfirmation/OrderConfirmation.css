@@ -6,6 +6,22 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .confirmation-container {
   margin-top: 50px;
   display: flex;
@@ -16,7 +32,7 @@
   button {
     color: white;
     background-color: var(--text-blue);
-    font-weight: 500;
+    font-family: poppinsRegular;
     font-size: 13px;
     border-radius: 20px;
     width: 200px;
@@ -32,16 +48,16 @@
   width: 54%;
 }
 .confirmation-header {
-  font-size: 35px;
-  font-weight: 800;
+  font-size: 30px;
+  font-family: poppinsSemiBold;
   width: 70%;
   line-height: 45px;
 }
 .confirmation-content {
-  margin-top: 20px;
+  margin-top: 18px;
   color: #787878;
   font-size: 14px;
-  font-weight: 400;
+  font-family: poppinsLight;
 }
 .billing-container {
   display: grid;
@@ -51,13 +67,13 @@
 }
 
 .billing-content-head {
-  font-weight: 600;
+  font-family: poppinsRegular;
   font-size: 14px;
 }
 
 .billing-text {
   text-align: left;
-  font-weight: 400;
+  font-family: poppinsLight;
   font-size: 14px;
   color: #787878;
 }

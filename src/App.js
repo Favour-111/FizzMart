@@ -31,6 +31,8 @@ import { useContext } from "react";
 import { ShopContext } from "./components/Context/ShopContext";
 import FAQ from "./Pages/FAQ/FAQ";
 import Chatbot from "./components/ChatBot/ChatBot";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 function App() {
   const { categories, notifications, categoryLoader } = useContext(ShopContext);
   return (

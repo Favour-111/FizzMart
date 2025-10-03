@@ -25,7 +25,7 @@
 .New-ProductContent {
   font-weight: 400 !important;
   color: var(--text-normal);
-  font-size: 14px !important;
+  font-size: 12px !important;
 }
 .Recent {
   display: flex;

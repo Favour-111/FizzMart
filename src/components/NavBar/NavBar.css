@@ -6,12 +6,27 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
-
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .top-bar {
   background-color: var(--background-blue);
   padding: 6px 70px;
   font-size: 13px;
-  font-weight: 600;
+  font-family: poppinsRegular;
   color: #787878;
 }
 .navigation-bar {
@@ -34,7 +49,7 @@
   gap: 5px;
   text-decoration: none;
   font-size: 30px;
-  font-weight: 600;
+  font-family: poppinsRegular;
   color: #4b5966;
   span {
     color: var(--primary-blue);
@@ -50,7 +65,7 @@
   padding: 10px 15px;
   border-radius: 10px;
   font-size: 14px;
-  font-weight: 500;
+  font-family: poppinsRegular;
   color: #787878;
 }
 .Nav-search-input {
@@ -68,7 +83,7 @@
     font-size: 16px;
     outline: none;
     font-size: 14px;
-    font-weight: 600;
+    font-family: poppinsRegular;
     color: var(--text-normal);
     width: 100%;
     font-family: "Plus Jakarta Sans", sans-serif;
@@ -79,8 +94,7 @@
 }
 ::placeholder {
   font-size: 13px;
-  font-weight: 600;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: poppinsRegular;
   color: #9e9e9e;
 }
 .nav-icons {
@@ -150,9 +164,9 @@
   cursor: pointer;
   height: 32px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   padding: 0 20px;
-  font-weight: 400;
+  font-family: poppinsLight;
   color: var(--text-normal);
   transition: 200ms;
 }
@@ -173,7 +187,7 @@
   text-decoration: none;
   height: 40px;
   font-size: 13px;
-  font-weight: 500;
+  font-family: poppinsRegular;
   transition: 100ms;
   box-shadow: -1px 1px 5px -1px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: -1px 1px 5px -1px rgba(0, 0, 0, 0.25);
@@ -194,7 +208,7 @@
   font-size: 9px;
   display: flex;
   border-radius: 50%;
-  font-weight: bold;
+  font-family: poppinsRegular;
   align-items: center;
   justify-content: center;
   top: 3px;
@@ -210,9 +224,9 @@
     li {
       list-style-type: none;
       color: #4b5966;
-      font-size: 14.5px;
+      font-size: 13.5px;
       cursor: pointer;
-      font-weight: 500;
+      font-family: poppinsRegular;
     }
   }
   .nav-Itm {
@@ -233,7 +247,7 @@
     color: white;
     padding: 8px 30px;
     border-radius: 10px;
-    font-weight: 500;
+    font-family: poppinsRegular;
     box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.22);
     -webkit-box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.22);
@@ -270,7 +284,7 @@
   }
   li {
     color: #787878 !important;
-    font-weight: 400 !important;
+    font-family: poppinsLight !important;
     font-size: 14px !important;
     display: flex;
     align-items: center;
@@ -281,7 +295,7 @@
   }
   li:hover {
     border-radius: 5px;
-    background-color: #ededed;
+    background-color: #f3f3f3;
   }
 }
 .mega-menu.active {
@@ -336,7 +350,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 500;
+  font-family: poppinsRegular;
   font-size: 13px;
   color: #787878;
   cursor: pointer;
@@ -346,7 +360,7 @@
   background-color: #eeeeee;
 }
 .mega-menu-head {
-  font-weight: 600;
+  font-family: poppinsRegular;
   color: var(--primary-blue);
   font-size: 14.5px;
   padding: 0 5px;
@@ -382,8 +396,9 @@
     }
     .Dropdown-link {
       color: #4b5966;
-      font-weight: 500;
+      font-family: poppinsRegular;
       text-decoration: none;
+      font-size: 13px;
     }
   }
   li:hover {
@@ -434,7 +449,7 @@
     text-decoration: none;
     color: var(--text-blue);
     transition: 350ms;
-    font-weight: 500;
+    font-family: poppinsLight;
     font-size: 13px;
     width: 100%;
     padding: 8px;

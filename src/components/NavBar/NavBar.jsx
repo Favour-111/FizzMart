@@ -94,24 +94,32 @@ const NavBar = () => {
                   <GoSearch />
                 </div>
               </div>
-              {results.length > 0 && (
+              {results.length > 0 ? (
                 <div className="search-item shadow-sm">
                   {results.map((name, index) => (
                     <div
                       onClick={() => {
                         navigate(`/Result?search=${encodeURIComponent(name)}`);
-                        setResults(false);
+                        setResults([]); // Clear results when navigating
                       }}
                       key={index}
                       className="search-item-container"
                     >
-                      <div> {name}</div>
+                      <div>{name}</div>
                       <div>
                         <GoArrowUpRight />
                       </div>
                     </div>
                   ))}
                 </div>
+              ) : (
+                query && (
+                  <div className="search-item shadow-sm">
+                    <div className="search-item-container">
+                      <div>No results for "{query}"</div>
+                    </div>
+                  </div>
+                )
               )}
             </div>
 
@@ -217,7 +225,7 @@ const NavBar = () => {
                     <div>My Account</div>
                   </Link>
 
-                  <Link to="/settings/orders" className="user-menu-items">
+                  <Link to="/sign-in" className="user-menu-items">
                     <div>
                       <TfiPackage />
                     </div>

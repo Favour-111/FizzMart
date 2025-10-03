@@ -188,9 +188,9 @@ const Cart = () => {
                 </div>
                 <div className="cart-summary">
                   <div className="cart-head">Summary</div>
-                  <div className="shipping-head">Estimated shipping</div>
+                  <div className="shipping-head">Order summary</div>
                   <div className="shipping-content mb-3">
-                    Enter your destination to get a shipping estimate
+                    Click the checkout button to Proceed to Check out
                   </div>
                   <div className="price">
                     <div>sub-total</div>

@@ -56,7 +56,9 @@ const RecentlyViewed = () => {
         <div className="NewProduct-container">
           <div className="newproduct">
             <div className="new-prod-top">
-              <div className="New-ProductHead">Recently Viewed</div>
+              <div className="New-ProductHead">
+                Recently <span>Viewed</span>{" "}
+              </div>
               <div className="New-ProductContent">
                 Take another look at the items you recently viewed
               </div>

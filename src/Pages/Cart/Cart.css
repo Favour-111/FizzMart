@@ -7,11 +7,27 @@
   --hover-blue: #3b82f6;
 }
 
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .cart-container {
   padding: 20px;
 }
 .cart-header {
-  font-weight: bold;
+  font-family: poppinsSemiBold;
   font-size: 30px;
   margin-top: 40px;
 }
@@ -46,7 +62,7 @@
 }
 .cart-head {
   font-size: 18px;
-  font-weight: 600;
+  font-family: poppinsRegular;
   color: var(--text-normal);
 }
 .shipping-head {
@@ -58,14 +74,15 @@
   color: #787878;
   margin-top: 5px;
   width: 90%;
-  font-size: 13px;
+  font-family: poppinsRegular;
+  font-size: 11px;
 }
 .price {
   margin-top: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 500;
+  font-family: poppinsRegular;
   color: var(--text-normal);
   font-size: 15px;
 }
@@ -104,12 +121,12 @@
 .cart-item-name {
   font-size: 14px;
   width: 100px;
-  font-weight: 500;
+  font-family: poppinsRegular;
 }
 .cart-weight {
   color: #787878;
   font-size: 12px;
-  font-weight: 600;
+  font-family: poppinsRegular;
 }
 .remove-section {
   cursor: pointer;
@@ -119,7 +136,7 @@
   align-items: center;
   gap: 5px;
   font-size: 12px;
-  font-weight: 500;
+  font-family: poppinsLight;
   .cart-remove-icon {
     color: var(--primary-blue);
   }
@@ -151,6 +168,7 @@
   height: 100%;
   font-size: 12px;
   cursor: pointer;
+  font-family: poppinsRegular;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,7 +178,7 @@
 }
 .Cart-price {
   font-size: 14px;
-  font-weight: 600;
+  font-family: poppinsRegular;
 }
 .empty-cart {
   display: flex;
@@ -181,21 +199,21 @@
     border-radius: 5px;
     border: none;
     font-size: 14px;
-    font-weight: 600;
+    font-family: poppinsRegular;
   }
 }
 
 .cart-empty-head {
   margin-top: 20px;
   font-size: 20px;
-  font-weight: 600;
+  font-family: poppinsRegular;
 }
 .cart-empty-content {
   width: 60%;
   text-align: center;
   margin-top: 10px;
   color: var(--text-normal);
-  font-weight: 500;
+  font-family: poppinsRegular;
   font-size: 15px;
 }
 .shipping-content-buttons {
@@ -205,13 +223,13 @@
   margin-top: 20px;
   button {
     font-size: 12px;
-    font-weight: 500;
+    font-family: poppinsRegular;
     border: none;
     border-radius: 5px;
     color: white;
     padding: 9px 20px;
     span {
-      font-weight: bold;
+      font-family: poppinsSemiBold;
       font-size: 12px;
     }
   }

@@ -80,7 +80,9 @@ const SignUp = () => {
           <div>
             <LiaOpencart className="logo-icon" />
           </div>
-          <div>H&P Marketplace</div>
+          <div>
+            Fizz <span>Mart</span>
+          </div>
         </Link>
         <div className="account-switch">
           Already have an account?{" "}
@@ -139,9 +141,9 @@ const SignUp = () => {
                 <p className="error-text">{errors.password}</p>
               )}
               {show ? (
-                <FiEye className="eye" onClick={() => setShow(false)} />
+                <FiEye className="eye2" onClick={() => setShow(false)} />
               ) : (
-                <FiEyeOff className="eye" onClick={() => setShow(true)} />
+                <FiEyeOff className="eye2" onClick={() => setShow(true)} />
               )}
             </div>
 

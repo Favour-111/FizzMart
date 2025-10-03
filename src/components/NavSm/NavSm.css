@@ -6,7 +6,22 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
-
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .nav-sm-container {
   padding: 15px 60px;
   display: flex;
@@ -39,7 +54,7 @@
   font-size: 9px;
   display: flex;
   border-radius: 50%;
-  font-weight: 600;
+  font-family: poppinsRegular;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -54,14 +69,14 @@
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  font-weight: 600;
+  font-family: poppinsRegular;
   color: #4b5966;
   display: flex;
   align-items: center;
   gap: 5px;
   text-decoration: none;
   font-size: 25px;
-  font-weight: 600;
+  font-family: poppinsRegular;
 
   span {
     color: var(--primary-blue);
@@ -137,7 +152,7 @@
   padding: 13px 30px;
   border-radius: 7px;
   margin-top: 10px;
-  font-weight: 600;
+  font-family: poppinsRegular;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +201,7 @@
     color: var(--text-normal);
     text-decoration: none;
     font-size: 13.5px;
-    font-weight: 500;
+    font-family: poppinsRegular;
     opacity: 0.8;
     display: flex;
     align-items: center;
@@ -304,7 +319,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: 400;
+  font-family: poppinsLight;
   font-size: 13px;
   color: #787878;
   cursor: pointer;
@@ -317,7 +332,7 @@
   color: #787878;
   text-decoration: none;
   font-size: 14px;
-  font-weight: 400;
+  font-family: poppinsLight;
 }
 .mega-menu-sm.active {
   max-height: 3000px;

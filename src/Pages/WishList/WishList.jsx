@@ -168,7 +168,7 @@ const WishList = () => {
             <div className="empty-cont">
               Explore more and shortlist some item
             </div>
-            <button onClick={() => navigate("/shop-list")}>
+            <button onClick={() => navigate("/store-categories")}>
               continue shopping
             </button>
           </div>

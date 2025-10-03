@@ -13,7 +13,9 @@ const BestSellers = () => {
         <div className="newproduct">
           <div className="new-prod-top2">
             <div className="header-sub-head">Products</div>
-            <div className="New-ProductHead">Bestsellers In Your Area</div>
+            <div className="New-ProductHead">
+              Bestsellers In <span>Your Area</span>{" "}
+            </div>
             <div className="New-ProductContent">
               Find the bestseller products in your area with discount.
             </div>

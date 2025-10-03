@@ -118,7 +118,7 @@ const NavSm = () => {
                 />
                 <IoSearchOutline />
               </div>
-              {results.length > 0 && (
+              {results.length > 0 ? (
                 <div className="menu-item-search-sm shadow-sm">
                   <div
                     onClick={() => {
@@ -149,6 +149,14 @@ const NavSm = () => {
                     </div>
                   ))}
                 </div>
+              ) : (
+                query && (
+                  <div className="menu-item-search-sm shadow-sm">
+                    <div className="search-item-container">
+                      <div>No results for "{query}"</div>
+                    </div>
+                  </div>
+                )
               )}
             </div>
 
@@ -544,7 +552,7 @@ const NavSm = () => {
             />
             <IoSearchOutline />
           </div>
-          {results.length > 0 && (
+          {results.length > 0 ? (
             <div className="search-item-sm shadow-sm">
               <div
                 onClick={() => {
@@ -574,6 +582,14 @@ const NavSm = () => {
                 </div>
               ))}
             </div>
+          ) : (
+            query && (
+              <div className="search-item-sm shadow-sm">
+                <div className="search-item-container">
+                  <div>No results for "{query}"</div>
+                </div>
+              </div>
+            )
           )}
         </div>
       </div>

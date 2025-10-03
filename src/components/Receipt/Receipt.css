@@ -6,12 +6,28 @@
   --text-normal: #4b5966;
   --hover-blue: #3b82f6;
 }
+@font-face {
+  font-family: poppinsBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsLight;
+  src: url(../../assets/font/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppinsSemiBold;
+  src: url(../../assets/font/Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppinsRegular;
+  src: url(../../assets/font/Poppins-Medium.ttf);
+}
 .receipt-wrapper {
   border-radius: 20px;
 }
 .receipt-title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 17px;
+  font-family: poppinsRegular;
 }
 .payment-value {
   background-color: #15bfd51c;
@@ -26,13 +42,13 @@
   margin-top: 10px;
   .label {
     color: #787878;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-family: poppinsRegular;
   }
   .value {
     color: #000;
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 12px;
+    font-family: poppinsLight;
   }
 }
 .receipt-info-item {
@@ -46,15 +62,18 @@
   .item-name {
     font-size: 12px;
     width: 140px;
+    font-family: poppinsRegular;
   }
   .item-meta {
     font-size: 12px;
+    font-family: poppinsRegular;
     color: #787878;
   }
 
   .item-price {
     font-size: 12px;
     color: #787878;
+    font-family: poppinsRegular;
   }
 }
 .summary-row {
@@ -64,12 +83,12 @@
   gap: 5px;
   div {
     font-size: 12px;
-    font-weight: 400;
+    font-family: poppinsLight;
     color: #787878;
   }
   span {
     font-size: 13px;
-    font-weight: 600;
+    font-family: poppinsRegular;
   }
 }
 .print-btn {
@@ -80,8 +99,8 @@
   border: none;
   border-radius: 6px;
   font-size: 12px;
-  font-weight: 500;
   border-radius: 20px;
+  font-family: poppinsRegular;
   cursor: pointer;
   transition: 200ms;
 }

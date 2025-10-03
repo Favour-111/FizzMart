@@ -26,7 +26,9 @@ const NewProduct = () => {
         <div className="newproduct">
           <div className="new-prod-top">
             <div className="header-sub-head">Products</div>
-            <div className="New-ProductHead">New Product</div>
+            <div className="New-ProductHead">
+              New <span>Product</span>{" "}
+            </div>
             <div className="New-ProductContent">
               New products with updated stocks
             </div>
