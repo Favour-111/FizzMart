@@ -126,7 +126,7 @@
   position: relative;
   z-index: 10000;
 
-  font-family: poppinsSemiBold;
+  font-family: poppinsRegular;
   width: 80%;
   line-height: 1.2;
   margin-top: 25px;
@@ -179,7 +179,7 @@
 }
 .banner-top-head {
   font-size: 25px;
-  width: 60%;
+  width: 80%;
   line-height: 1.2;
   color: #333c45;
 
@@ -491,7 +491,6 @@
   .banner-right-head {
     font-size: 25px;
     width: 90%;
-    font-weight: 600;
     margin-top: 10px;
   }
   .banner-left {
