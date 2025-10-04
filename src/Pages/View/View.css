@@ -36,6 +36,26 @@
     width: 100%;
   }
 }
+.sub-image-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sub-img-item {
+  width: 120px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  padding: 2px;
+  transition: 200ms;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+.sub-img-item:hover {
+  opacity: 0.7;
+}
 .product-about-container-content {
   width: 46%;
 }
@@ -416,6 +436,9 @@
   }
   .related-container {
     margin-top: 70px;
+  }
+  .sub-img-item {
+    margin: 20px 0;
   }
 }
 @media screen and (max-width: 450px) {

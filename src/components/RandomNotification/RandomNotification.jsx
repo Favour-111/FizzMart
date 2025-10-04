@@ -179,12 +179,12 @@ const RandomNotification = () => {
         <div className="notification shadow-sm">
           <div>
             <img
-              src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
+              src="https://png.pngtree.com/png-clipart/20250103/original/pngtree-a-happy-3d-business-man-giving-thumb-up-png-image_19949734.png"
               alt="Notification Icon"
             />
           </div>
           <div>
-            <div>{notification.message}!!</div>
+            <div className="message">{notification.message}!!</div>
             <div className="time">{notification.time}</div>
           </div>
         </div>

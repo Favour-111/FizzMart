@@ -51,7 +51,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 40px !important;
-  width: 16.6%;
+  width: 100%;
   flex-direction: column;
 }
 .category-item {
@@ -76,6 +76,8 @@
 .category-list-name {
   margin-top: 15px;
   font-weight: 400;
+  width: 100% !important;
+  text-align: center;
   font-family: poppinsRegular;
   font-size: 14px;
   color: var(--text-normal);
@@ -90,7 +92,7 @@
     padding: 0 !important;
   }
   .category {
-    width: 33.3% !important;
+    width: 100% !important;
   }
 }
 
@@ -102,7 +104,7 @@
 
 @media screen and (max-width: 510px) {
   .category {
-    width: 33% !important;
+    width: 100% !important;
     margin-top: 30px !important;
   }
   .header-sub-head {

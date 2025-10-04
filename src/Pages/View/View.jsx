@@ -331,6 +331,32 @@ const View = () => {
           <div className="product-about-container">
             <div className="product-about-container-image">
               <img src={ProductFind?.image} alt={ProductFind?.productName} />
+              {/* <div className="sub-image-container">
+                <div className="sub-img-item">
+                  <img
+                    src="https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-fresh-raw-chicken-leg-piece-with-skin-png-image_15816101.png"
+                    alt=""
+                  />
+                </div>
+                <div className="sub-img-item">
+                  <img
+                    src="https://static.vecteezy.com/system/resources/previews/056/998/237/non_2x/whole-uncarved-spatchcock-chicken-on-cooking-surface-png.png"
+                    alt=""
+                  />
+                </div>
+                <div className="sub-img-item">
+                  <img
+                    src="https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-fresh-raw-chicken-leg-piece-with-skin-png-image_15816101.png"
+                    alt=""
+                  />
+                </div>
+                <div className="sub-img-item">
+                  <img
+                    src="https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-fresh-raw-chicken-leg-piece-with-skin-png-image_15816101.png"
+                    alt=""
+                  />
+                </div>
+              </div> */}
             </div>
             <div className="product-about-container-content">
               {ProductFind?.availability !== "in Stock" ? (
