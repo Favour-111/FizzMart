@@ -38,12 +38,11 @@
 .AboutSection-Head {
   margin-top: 10px;
   font-size: 18px;
-  font-family: poppinsSemiBold;
+  font-family: poppinsRegular;
 }
 .AboutSection-Section {
   font-size: 13px;
-  font-family: poppinsRegular;
-  font-weight: 500;
+  font-family: poppinsLight;
   margin-top: 10px;
   color: #787878;
 }

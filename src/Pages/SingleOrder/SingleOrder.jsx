@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { IoWarning } from "react-icons/io5";
 import { ShopContext } from "../../components/Context/ShopContext";
 const SingleOrder = () => {
-  const { product, ProdLoader } = useContext(ShopContext);
+  const { product, ProdLoader, addToCart } = useContext(ShopContext);
   const navigate = useNavigate();
   const location = useLocation();
   const orderID = location.state || {};
@@ -165,7 +165,7 @@ const SingleOrder = () => {
                   </div>
                   <div className="single-price mt-1">₦{item.price}</div>
                 </div>
-                <button onClick={() => item.id}>Buy Again</button>
+                <button onClick={() => addToCart(item.id)}>Buy Again</button>
               </div>
             ))}
           </div>

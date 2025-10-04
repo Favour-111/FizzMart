@@ -44,7 +44,7 @@ const About = () => {
           <div className="about-flex">
             <div className="about-text">
               <div className="about-head">
-                Welcome to H&P Marketplace Your One-Stop Online Store
+                Welcome to Fizz<span>Mart</span> Your One-Stop Online Store
               </div>
               <div className="about-content">
                 We started with a simple mission: to make shopping easy,
@@ -63,7 +63,7 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="about-H&P Marketplace">
+          <div className="about-Fizz<span>Mart</span>">
             <div className="ready-text">Ready To Get Started?</div>
             <div className="about-contents-item">
               {aboutSections.map((item) => {

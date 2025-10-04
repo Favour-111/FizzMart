@@ -1,0 +1,92 @@
+.contact-container {
+  position: fixed;
+  bottom: 50px;
+  right: 0;
+}
+
+.contact-icn {
+  background-color: tomato;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000000000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.contact-icn:hover {
+  opacity: 0.8;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 60px;
+  gap: 5px;
+  right: 20px;
+  z-index: 1000000000;
+  opacity: 0;
+  margin-bottom: 10px;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.social-icons.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.social-icons svg {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.social-icons svg:hover {
+  color: #0073e6;
+}
+.face-book {
+  color: white;
+  background-color: #1877f2;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+.twitter {
+  color: white;
+  background-color: #000;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+.instagram {
+  color: white;
+  background: linear-gradient(45deg, #b70ee3, #fa14b9, #fe4e13, #ffc601);
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+.tik-tok {
+  color: white;
+  background-color: #000;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}

@@ -48,7 +48,9 @@ const Contact = () => {
                   alt="domain"
                 />
               </div>
-              <div>www.H&P Marketplace.com</div>
+              <div>
+                www.Fizz<span>Mart</span>.com
+              </div>
             </div>
           </div>
           <div className="contact-info-itm shadow-sm">

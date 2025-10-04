@@ -417,7 +417,7 @@ const NavSm = () => {
         <div className="nav-sm-icons">
           <Link to="/Wishlist-page" className="shopping-icons-sm">
             <FiHeart size={23} />
-            <div className="shopping-counter-sm">{getTotalList()}</div>
+            <div className="shopping-counter-sm">{getTotalList() || 0}</div>
           </Link>
           <Link
             // to={`${
@@ -530,7 +530,7 @@ const NavSm = () => {
           <Link to="/cart-page" className="shopping-icons-sm">
             <MdOutlineShoppingCart size={23} />
             <div className="shopping-counter-sm">
-              <div>{getTotalCart()}</div>
+              <div>{getTotalCart() || 0}</div>
             </div>
           </Link>
           {/* <Link to="/cart-page" className="shopping-icons-sm">

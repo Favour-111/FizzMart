@@ -137,7 +137,7 @@ const NavBar = () => {
           <div className="nav-icons">
             <Link to="/Wishlist-page" className="shopping-icons">
               <FiHeart />
-              <div className="shopping-counter">{getTotalList()}</div>
+              <div className="shopping-counter">{getTotalList() || 0}</div>
             </Link>
             <div
               className="user-menu"
@@ -245,7 +245,7 @@ const NavBar = () => {
             </div>
             <Link to="/cart-page" className="shopping-icons">
               <MdOutlineShoppingCart />
-              <div className="shopping-counter">{getTotalCart()}</div>
+              <div className="shopping-counter">{getTotalCart() || 0}</div>
             </Link>
           </div>
         </div>

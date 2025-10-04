@@ -72,7 +72,9 @@ const Reset = () => {
           <div>
             <LiaOpencart className="logo-icon" />
           </div>
-          <div>H&P Marketplace</div>
+          <div>
+            Fizz<span>Mart</span>
+          </div>
         </Link>
         <div className="account-switch">
           Don't have an account?{" "}

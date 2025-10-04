@@ -475,7 +475,7 @@ const Checkout = () => {
 
       // ✅ get backend orderId
       const OrderIdentity = response.data.order?._id;
-
+      clearCart();
       navigate(`/Order-successful/${userId}`, {
         state: {
           OrderIdentity,
@@ -507,7 +507,9 @@ const Checkout = () => {
               <div>
                 <LiaOpencart className="logo-icon" />
               </div>
-              <div>H&P Marketplace</div>
+              <div>
+                Fizz<span>Mart</span>
+              </div>
             </Link>
           </div>
           <div className="Loader-page">

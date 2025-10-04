@@ -21,6 +21,8 @@ import PopUP from "../../components/PopUp/PopUP";
 import { useNavigate } from "react-router";
 import Recent from "../../components/Recent/Recent";
 import Recommended from "../../components/Recommended/Recommended";
+import Contact from "../../components/Contact/Contact";
+import RandomNotification from "../../components/RandomNotification/RandomNotification";
 var settings = {
   dots: false,
   infinite: true,
@@ -179,6 +181,8 @@ const Home = () => {
       </div>
       <Footer />
       <BackToTop />
+      <Contact />
+      <RandomNotification />
     </div>
   );
 };
